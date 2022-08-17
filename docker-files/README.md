@@ -24,4 +24,5 @@ docker run -it [BUILD-NAME]
 
 ## ubuntu-22_04
 
-Contains a developer installation of t8code on Ubuntu 22.04.
+Contains a debug and release configuration of t8code on Ubuntu 22.04.
+See `/exec/t8code_debug`  and `/exec/t8code_release`.
