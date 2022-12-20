@@ -1,0 +1,25 @@
+<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <PUnstructuredGrid GhostLevel="0">
+    <PCellData Vectors="Flow">
+      <PDataArray type="Int64" Name="treeid"/>
+      <PDataArray type="Int64" Name="mpirank"/>
+      <PDataArray type="Int64" Name="level"/>
+      <PDataArray type="Int64" Name="element_id"/>
+      <PDataArray type="Float64" Name="Num. Solution"/>
+      <PDataArray type="Float64" Name="Ana. Solution"/>
+      <PDataArray type="Float64" Name="Error"/>
+      <PDataArray type="Float64" Name="Flow" NumberOfComponents="3"/>
+    </PCellData>
+    <PPoints>
+      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
+    </PPoints>
+    <Piece Source="advection_000_0.vtu"/>
+    <Piece Source="advection_000_1.vtu"/>
+    <Piece Source="advection_000_2.vtu"/>
+    <Piece Source="advection_000_3.vtu"/>
+    <Piece Source="advection_000_4.vtu"/>
+    <Piece Source="advection_000_5.vtu"/>
+    <Piece Source="advection_000_6.vtu"/>
+    <Piece Source="advection_000_7.vtu"/>
+  </PUnstructuredGrid>
+</VTKFile>
