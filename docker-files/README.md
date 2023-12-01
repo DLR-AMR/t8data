@@ -1,6 +1,8 @@
 # Dockerfiles
 
 This folder contains dockerfiles for t8code configurations.
+There are also [Docker images](https://hub.docker.com/r/dlramr/t8code-ubuntu/tags) listed in the Docker hub.
+Those Docker files can be accessed in the [t8code-docker-images](https://github.com/DLR-AMR/t8code-docker-images) repository.
 
 # Building
 
