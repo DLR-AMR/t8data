@@ -211,6 +211,8 @@ benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm,
   
   total_time += sc_MPI_Wtime ();
 
+  t8_global_productionf ("Num steps: %d\n", num_steps);
+
   sc_stats_accumulate (&times[0], new_time);
   sc_stats_accumulate (&times[1], adapt_time);
   sc_stats_accumulate (&times[2], partition_time);
@@ -273,10 +275,10 @@ main (int argc, char **argv)
   const double delta_t = cfl * 0.64 / (1 << initial_level);
   t8_global_productionf ("Using CFL %f, delta_t = %f\n", cfl, delta_t);
 
+  t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
   t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
 
   const int max_level = initial_level + level_diff;
-  t8_productionf ("[D] x_min_max = [%f, %f], initial_level = %d, level_diff = %d, max_level = %d\n", x_min_max[0], x_min_max[1], initial_level, initial_level, max_level);
 
   benchmark_band_adapt (cmesh, "benchmark", sc_MPI_COMM_WORLD, initial_level, max_level, no_vtk, 
     x_min_max, delta_t, T);
