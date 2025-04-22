@@ -1,14 +1,3 @@
-<VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
-  <PUnstructuredGrid GhostLevel="0">
-    <PCellData>
-      <PDataArray type="Int64" Name="treeid"/>
-      <PDataArray type="Int64" Name="mpirank"/>
-      <PDataArray type="Int64" Name="level"/>
-      <PDataArray type="Int64" Name="element_id"/>
-    </PCellData>
-    <PPoints>
-      <PDataArray type="Float32" Name="Points" NumberOfComponents="3"/>
-    </PPoints>
-    <Piece Source="curved_plane_adapted_forest_aircraft_10_0.vtu"/>
-  </PUnstructuredGrid>
-</VTKFile>
+version https://git-lfs.github.com/spec/v1
+oid sha256:6b51ba3a441e202aa6cdd2336abe80cf5bc20afbeb857751f209b22c504e8bba
+size 596
