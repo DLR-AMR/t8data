@@ -1,3 +1,4 @@
 *.vtu filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.pvtu filter=lfs diff=lfs merge=lfs -text
+*pvsm filter=lfs diff=lfs merge=lfs -text
