@@ -1,4 +1,12 @@
 *.vtu filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.pvtu filter=lfs diff=lfs merge=lfs -text
+*.msh filter=lfs diff=lfs merge=lfs -text
+*.brep filter=lfs diff=lfs merge=lfs -text
+*.FCStd filter=lfs diff=lfs merge=lfs -text
+*.CATPart filter=lfs diff=lfs merge=lfs -text
+*.geo filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.gif:Zone.Identifier filter=lfs diff=lfs merge=lfs -text
 *.pvsm filter=lfs diff=lfs merge=lfs -text
