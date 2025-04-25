@@ -1,0 +1,631 @@
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 1 procs ------------
+[1745580881.817123] [n10495:3080400:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.00133247 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.00133247
+[t8]    Maximum attained at rank       0: 0.00133247
+[t8] Statistics for   adapt
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.202355 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.202355
+[t8]    Maximum attained at rank       0: 0.202355
+[t8] Statistics for   partition
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.00361261 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.00361261
+[t8]    Maximum attained at rank       0: 0.00361261
+[t8] Statistics for   total
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.21005 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.21005
+[t8]    Maximum attained at rank       0: 0.21005
+[t8] Summary = [ 0.00133247 0.202355 0.00361261 0.21005 ];
+[t8] Maximum = [ 0.00133247 0.202355 0.00361261 0.21005 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.000148812 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.000148812
+[t8]    Maximum attained at rank       0: 0.000148812
+[t8] Statistics for   adapt
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.200213 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.200213
+[t8]    Maximum attained at rank       0: 0.200213
+[t8] Statistics for   partition
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.00189789 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.00189789
+[t8]    Maximum attained at rank       0: 0.00189789
+[t8] Statistics for   total
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.204536 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.204536
+[t8]    Maximum attained at rank       0: 0.204536
+[t8] Summary = [ 0.000148812 0.200213 0.00189789 0.204536 ];
+[t8] Maximum = [ 0.000148812 0.200213 0.00189789 0.204536 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.000147731 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.000147731
+[t8]    Maximum attained at rank       0: 0.000147731
+[t8] Statistics for   adapt
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.199516 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.199516
+[t8]    Maximum attained at rank       0: 0.199516
+[t8] Statistics for   partition
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.00168757 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.00168757
+[t8]    Maximum attained at rank       0: 0.00168757
+[t8] Statistics for   total
+[t8]    Global number of values:       1
+[t8]    Mean value (std. dev.):           0.203617 (0 = 0%)
+[t8]    Minimum attained at rank       0: 0.203617
+[t8]    Maximum attained at rank       0: 0.203617
+[t8] Summary = [ 0.000147731 0.199516 0.00168757 0.203617 ];
+[t8] Maximum = [ 0.000147731 0.199516 0.00168757 0.203617 ];
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 2 procs ------------
+[1745580883.144065] [n10495:3080428:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.000903535 (1.05e-06 = 0.116%)
+[t8]    Minimum attained at rank       1: 0.00090249
+[t8]    Maximum attained at rank       0: 0.00090458
+[t8] Statistics for   adapt
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.114664 (1.48e-06 = 0.00129%)
+[t8]    Minimum attained at rank       1: 0.114663
+[t8]    Maximum attained at rank       0: 0.114665
+[t8] Statistics for   partition
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.0100204 (2.41e-06 = 0.0241%)
+[t8]    Minimum attained at rank       1: 0.010018
+[t8]    Maximum attained at rank       0: 0.0100228
+[t8] Statistics for   total
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.129472 (3.35e-06 = 0.00259%)
+[t8]    Minimum attained at rank       1: 0.129469
+[t8]    Maximum attained at rank       0: 0.129476
+[t8] Summary = [ 0.000903535 0.114664 0.0100204 0.129472 ];
+[t8] Maximum = [ 0.00090458 0.114665 0.0100228 0.129476 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.00050909 (8.65e-07 = 0.17%)
+[t8]    Minimum attained at rank       0: 0.000508225
+[t8]    Maximum attained at rank       1: 0.000509955
+[t8] Statistics for   adapt
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.113005 (1.06e-05 = 0.00936%)
+[t8]    Minimum attained at rank       1: 0.112994
+[t8]    Maximum attained at rank       0: 0.113015
+[t8] Statistics for   partition
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.0077076 (5.45e-07 = 0.00707%)
+[t8]    Minimum attained at rank       0: 0.00770705
+[t8]    Maximum attained at rank       1: 0.00770814
+[t8] Statistics for   total
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.124732 (1.58e-06 = 0.00127%)
+[t8]    Minimum attained at rank       1: 0.124731
+[t8]    Maximum attained at rank       0: 0.124734
+[t8] Summary = [ 0.00050909 0.113005 0.0077076 0.124732 ];
+[t8] Maximum = [ 0.000509955 0.113015 0.00770814 0.124734 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.000496565 (1.9e-07 = 0.0383%)
+[t8]    Minimum attained at rank       0: 0.000496375
+[t8]    Maximum attained at rank       1: 0.000496755
+[t8] Statistics for   adapt
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.112501 (1.53e-05 = 0.0136%)
+[t8]    Minimum attained at rank       1: 0.112486
+[t8]    Maximum attained at rank       0: 0.112517
+[t8] Statistics for   partition
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.00771272 (1.27e-06 = 0.0164%)
+[t8]    Minimum attained at rank       0: 0.00771145
+[t8]    Maximum attained at rank       1: 0.00771398
+[t8] Statistics for   total
+[t8]    Global number of values:       2
+[t8]    Mean value (std. dev.):           0.124306 (4.63e-06 = 0.00372%)
+[t8]    Minimum attained at rank       0: 0.124302
+[t8]    Maximum attained at rank       1: 0.124311
+[t8] Summary = [ 0.000496565 0.112501 0.00771272 0.124306 ];
+[t8] Maximum = [ 0.000496755 0.112517 0.00771398 0.124311 ];
+[1745580883.144061] [n10495:3080429:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 4 procs ------------
+[1745580884.386388] [n10495:3080463:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0011409 (4.6e-05 = 4.03%)
+[t8]    Minimum attained at rank       0: 0.00108414
+[t8]    Maximum attained at rank       1: 0.0011918
+[t8] Statistics for   adapt
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0699723 (1.52e-05 = 0.0217%)
+[t8]    Minimum attained at rank       1: 0.0699523
+[t8]    Maximum attained at rank       0: 0.0699883
+[t8] Statistics for   partition
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0103236 (5.17e-06 = 0.0501%)
+[t8]    Minimum attained at rank       0: 0.0103162
+[t8]    Maximum attained at rank       3: 0.0103307
+[t8] Statistics for   total
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0857635 (4.52e-05 = 0.0527%)
+[t8]    Minimum attained at rank       0: 0.0857056
+[t8]    Maximum attained at rank       1: 0.0858134
+[t8] Summary = [ 0.0011409 0.0699723 0.0103236 0.0857635 ];
+[t8] Maximum = [ 0.0011918 0.0699883 0.0103307 0.0858134 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.000661152 (1.22e-06 = 0.184%)
+[t8]    Minimum attained at rank       2: 0.000659277
+[t8]    Maximum attained at rank       3: 0.000662657
+[t8] Statistics for   adapt
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0685583 (2.06e-05 = 0.0301%)
+[t8]    Minimum attained at rank       2: 0.0685262
+[t8]    Maximum attained at rank       3: 0.0685825
+[t8] Statistics for   partition
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.00898828 (6.78e-06 = 0.0754%)
+[t8]    Minimum attained at rank       3: 0.00898083
+[t8]    Maximum attained at rank       2: 0.00899625
+[t8] Statistics for   total
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0821393 (5.54e-06 = 0.00675%)
+[t8]    Minimum attained at rank       0: 0.082136
+[t8]    Maximum attained at rank       2: 0.0821489
+[t8] Summary = [ 0.000661152 0.0685583 0.00898828 0.0821393 ];
+[t8] Maximum = [ 0.000662657 0.0685825 0.00899625 0.0821489 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.000632271 (1.21e-06 = 0.192%)
+[t8]    Minimum attained at rank       2: 0.000630456
+[t8]    Maximum attained at rank       1: 0.000633697
+[t8] Statistics for   adapt
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0687219 (2.52e-05 = 0.0366%)
+[t8]    Minimum attained at rank       2: 0.0686819
+[t8]    Maximum attained at rank       3: 0.068751
+[t8] Statistics for   partition
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.00858736 (1.04e-05 = 0.121%)
+[t8]    Minimum attained at rank       3: 0.00857629
+[t8]    Maximum attained at rank       2: 0.00859953
+[t8] Statistics for   total
+[t8]    Global number of values:       4
+[t8]    Mean value (std. dev.):           0.0817032 (2.01e-06 = 0.00246%)
+[t8]    Minimum attained at rank       0: 0.081701
+[t8]    Maximum attained at rank       2: 0.0817062
+[t8] Summary = [ 0.000632271 0.0687219 0.00858736 0.0817032 ];
+[t8] Maximum = [ 0.000633697 0.068751 0.00859953 0.0817062 ];
+[1745580884.386342] [n10495:3080466:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580884.386337] [n10495:3080464:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580884.386337] [n10495:3080465:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 8 procs ------------
+[1745580885.569721] [n10495:3080506:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.00163225 (4.67e-05 = 2.86%)
+[t8]    Minimum attained at rank       4: 0.00154755
+[t8]    Maximum attained at rank       3: 0.00169025
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0448647 (2.71e-05 = 0.0604%)
+[t8]    Minimum attained at rank       5: 0.044824
+[t8]    Maximum attained at rank       7: 0.0449065
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0126814 (1.8e-05 = 0.142%)
+[t8]    Minimum attained at rank       2: 0.0126504
+[t8]    Maximum attained at rank       6: 0.0127055
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0641942 (4.45e-05 = 0.0694%)
+[t8]    Minimum attained at rank       4: 0.06412
+[t8]    Maximum attained at rank       3: 0.0642517
+[t8] Summary = [ 0.00163225 0.0448647 0.0126814 0.0641942 ];
+[t8] Maximum = [ 0.00169025 0.0449065 0.0127055 0.0642517 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.000820988 (9.41e-07 = 0.115%)
+[t8]    Minimum attained at rank       2: 0.000818859
+[t8]    Maximum attained at rank       3: 0.000822039
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0440668 (2.04e-05 = 0.0464%)
+[t8]    Minimum attained at rank       3: 0.0440366
+[t8]    Maximum attained at rank       7: 0.044094
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0113625 (1.14e-05 = 0.1%)
+[t8]    Minimum attained at rank       2: 0.011349
+[t8]    Maximum attained at rank       5: 0.0113805
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0606545 (4.17e-06 = 0.00687%)
+[t8]    Minimum attained at rank       0: 0.0606495
+[t8]    Maximum attained at rank       5: 0.060664
+[t8] Summary = [ 0.000820988 0.0440668 0.0113625 0.0606545 ];
+[t8] Maximum = [ 0.000822039 0.044094 0.0113805 0.060664 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.000789449 (1.21e-06 = 0.153%)
+[t8]    Minimum attained at rank       2: 0.000786509
+[t8]    Maximum attained at rank       3: 0.000790719
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0441953 (1.95e-05 = 0.0442%)
+[t8]    Minimum attained at rank       3: 0.0441677
+[t8]    Maximum attained at rank       0: 0.0442288
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0108699 (1.48e-05 = 0.136%)
+[t8]    Minimum attained at rank       2: 0.0108495
+[t8]    Maximum attained at rank       5: 0.010888
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.0601512 (3.79e-06 = 0.0063%)
+[t8]    Minimum attained at rank       7: 0.0601464
+[t8]    Maximum attained at rank       6: 0.0601601
+[t8] Summary = [ 0.000789449 0.0441953 0.0108699 0.0601512 ];
+[t8] Maximum = [ 0.000790719 0.0442288 0.010888 0.0601601 ];
+[1745580885.570383] [n10495:3080509:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.570587] [n10495:3080510:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.570419] [n10495:3080513:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.570375] [n10495:3080512:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.570375] [n10495:3080511:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.569868] [n10495:3080508:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580885.570449] [n10495:3080507:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 16 procs ------------
+[1745580886.801291] [n10495:3080571:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.00229556 (3.94e-05 = 1.72%)
+[t8]    Minimum attained at rank       5: 0.00225921
+[t8]    Maximum attained at rank       3: 0.00237637
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.036408 (3.56e-05 = 0.0979%)
+[t8]    Minimum attained at rank       2: 0.03635
+[t8]    Maximum attained at rank      11: 0.0364827
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0165726 (3.31e-05 = 0.2%)
+[t8]    Minimum attained at rank      15: 0.0165185
+[t8]    Maximum attained at rank       8: 0.0166257
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0617483 (3.91e-05 = 0.0633%)
+[t8]    Minimum attained at rank      10: 0.0617122
+[t8]    Maximum attained at rank       3: 0.0618322
+[t8] Summary = [ 0.00229556 0.036408 0.0165726 0.0617483 ];
+[t8] Maximum = [ 0.00237637 0.0364827 0.0166257 0.0618322 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.00111912 (7.11e-07 = 0.0635%)
+[t8]    Minimum attained at rank       2: 0.00111671
+[t8]    Maximum attained at rank       6: 0.00112007
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0354639 (3.52e-05 = 0.0993%)
+[t8]    Minimum attained at rank       2: 0.0353963
+[t8]    Maximum attained at rank      11: 0.0355268
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0152896 (1.62e-05 = 0.106%)
+[t8]    Minimum attained at rank       0: 0.0152618
+[t8]    Maximum attained at rank      13: 0.0153123
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0576655 (8.01e-06 = 0.0139%)
+[t8]    Minimum attained at rank       7: 0.0576523
+[t8]    Maximum attained at rank       9: 0.057685
+[t8] Summary = [ 0.00111912 0.0354639 0.0152896 0.0576655 ];
+[t8] Maximum = [ 0.00112007 0.0355268 0.0153123 0.057685 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.00113263 (4.9e-06 = 0.433%)
+[t8]    Minimum attained at rank       2: 0.00112528
+[t8]    Maximum attained at rank       9: 0.00114214
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.035287 (3.5e-05 = 0.0993%)
+[t8]    Minimum attained at rank       5: 0.0352402
+[t8]    Maximum attained at rank       0: 0.0353597
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0148008 (4.23e-06 = 0.0286%)
+[t8]    Minimum attained at rank       3: 0.014794
+[t8]    Maximum attained at rank      13: 0.0148073
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.0567583 (7.09e-06 = 0.0125%)
+[t8]    Minimum attained at rank       6: 0.0567474
+[t8]    Maximum attained at rank       5: 0.0567745
+[t8] Summary = [ 0.00113263 0.035287 0.0148008 0.0567583 ];
+[t8] Maximum = [ 0.00114214 0.0353597 0.0148073 0.0567745 ];
+[1745580886.844293] [n10495:3080580:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845875] [n10495:3080584:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.812202] [n10495:3080586:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.844271] [n10495:3080579:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845279] [n10495:3080581:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.801291] [n10495:3080573:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845548] [n10495:3080575:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845721] [n10495:3080582:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845875] [n10495:3080585:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845008] [n10495:3080577:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845046] [n10495:3080576:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845001] [n10495:3080578:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.845614] [n10495:3080574:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.802679] [n10495:3080572:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580886.817598] [n10495:3080583:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 32 procs ------------
+[1745580888.391766] [n10495:3080679:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0040876 (7.25e-05 = 1.77%)
+[t8]    Minimum attained at rank       3: 0.0040055
+[t8]    Maximum attained at rank       5: 0.00424702
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0379883 (7.22e-05 = 0.19%)
+[t8]    Minimum attained at rank       7: 0.037833
+[t8]    Maximum attained at rank      17: 0.0381188
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0251593 (0.000534 = 2.12%)
+[t8]    Minimum attained at rank       0: 0.0242697
+[t8]    Maximum attained at rank       1: 0.0259875
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0810756 (7.48e-05 = 0.0923%)
+[t8]    Minimum attained at rank      18: 0.0809933
+[t8]    Maximum attained at rank       2: 0.0812365
+[t8] Summary = [ 0.0040876 0.0379883 0.0251593 0.0810756 ];
+[t8] Maximum = [ 0.00424702 0.0381188 0.0259875 0.0812365 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.00172274 (9.57e-07 = 0.0556%)
+[t8]    Minimum attained at rank       2: 0.00171942
+[t8]    Maximum attained at rank      12: 0.00172435
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0367917 (6.72e-05 = 0.183%)
+[t8]    Minimum attained at rank       3: 0.0365935
+[t8]    Maximum attained at rank      20: 0.0368909
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0229129 (0.000322 = 1.41%)
+[t8]    Minimum attained at rank       0: 0.0223774
+[t8]    Maximum attained at rank       1: 0.0234175
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.072298 (1.49e-05 = 0.0206%)
+[t8]    Minimum attained at rank      18: 0.0722694
+[t8]    Maximum attained at rank       3: 0.0723255
+[t8] Summary = [ 0.00172274 0.0367917 0.0229129 0.072298 ];
+[t8] Maximum = [ 0.00172435 0.0368909 0.0234175 0.0723255 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.00171707 (1.12e-06 = 0.0649%)
+[t8]    Minimum attained at rank       2: 0.00171373
+[t8]    Maximum attained at rank      11: 0.00171947
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0365628 (8.78e-05 = 0.24%)
+[t8]    Minimum attained at rank       5: 0.0363497
+[t8]    Maximum attained at rank      15: 0.0366719
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0231212 (0.000232 = 1%)
+[t8]    Minimum attained at rank       0: 0.0227469
+[t8]    Maximum attained at rank       1: 0.0234811
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.0716399 (1.6e-05 = 0.0223%)
+[t8]    Minimum attained at rank      31: 0.071613
+[t8]    Maximum attained at rank       3: 0.0716725
+[t8] Summary = [ 0.00171707 0.0365628 0.0231212 0.0716399 ];
+[t8] Maximum = [ 0.00171947 0.0366719 0.0234811 0.0716725 ];
+[1745580888.437774] [n10495:3080710:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.428562] [n10495:3080706:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.421306] [n10495:3080681:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.436900] [n10495:3080688:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438122] [n10495:3080697:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.392016] [n10495:3080683:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.391271] [n10495:3080693:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.406629] [n10495:3080689:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438252] [n10495:3080698:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.392016] [n10495:3080686:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.437760] [n10495:3080695:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438147] [n10495:3080696:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.405679] [n10495:3080685:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.430208] [n10495:3080705:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.435612] [n10495:3080680:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.391674] [n10495:3080691:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.437130] [n10495:3080682:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.392466] [n10495:3080703:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438259] [n10495:3080702:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438259] [n10495:3080699:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.425963] [n10495:3080690:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.391271] [n10495:3080694:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.407071] [n10495:3080701:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.391502] [n10495:3080692:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.425457] [n10495:3080708:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.437719] [n10495:3080704:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.436762] [n10495:3080709:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.392373] [n10495:3080687:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.436909] [n10495:3080684:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.392960] [n10495:3080707:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580888.438299] [n10495:3080700:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark -e3 -l3 -r3 -n3 -x-0.1 -X0 -T1 -C1 with 64 procs ------------
+[1745580890.930396] [n10495:3080883:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] #################### Run 1 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.00879591 (0.000188 = 2.14%)
+[t8]    Minimum attained at rank       4: 0.00853486
+[t8]    Maximum attained at rank       3: 0.00929796
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0511845 (0.00017 = 0.332%)
+[t8]    Minimum attained at rank       0: 0.0507054
+[t8]    Maximum attained at rank      55: 0.0514475
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0416985 (0.000231 = 0.554%)
+[t8]    Minimum attained at rank       5: 0.0414334
+[t8]    Maximum attained at rank      40: 0.0421722
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.11703 (0.000194 = 0.166%)
+[t8]    Minimum attained at rank      60: 0.116733
+[t8]    Maximum attained at rank       3: 0.117544
+[t8] Summary = [ 0.00879591 0.0511845 0.0416985 0.11703 ];
+[t8] Maximum = [ 0.00929796 0.0514475 0.0421722 0.117544 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.00318852 (9.64e-07 = 0.0302%)
+[t8]    Minimum attained at rank      63: 0.00318574
+[t8]    Maximum attained at rank      42: 0.00319023
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0489405 (0.000192 = 0.392%)
+[t8]    Minimum attained at rank       4: 0.0484779
+[t8]    Maximum attained at rank      63: 0.0493245
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0392325 (1.05e-05 = 0.0267%)
+[t8]    Minimum attained at rank      35: 0.0392107
+[t8]    Maximum attained at rank      32: 0.0392623
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.103868 (3.41e-05 = 0.0329%)
+[t8]    Minimum attained at rank      63: 0.103799
+[t8]    Maximum attained at rank      29: 0.103935
+[t8] Summary = [ 0.00318852 0.0489405 0.0392325 0.103868 ];
+[t8] Maximum = [ 0.00319023 0.0493245 0.0392623 0.103935 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.00318709 (1.45e-06 = 0.0455%)
+[t8]    Minimum attained at rank      56: 0.00318364
+[t8]    Maximum attained at rank      11: 0.00319053
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0491988 (0.000171 = 0.347%)
+[t8]    Minimum attained at rank       3: 0.0487613
+[t8]    Maximum attained at rank      36: 0.0495589
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0386549 (9.37e-06 = 0.0242%)
+[t8]    Minimum attained at rank      17: 0.0386388
+[t8]    Maximum attained at rank      22: 0.0386802
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.10346 (3.44e-05 = 0.0332%)
+[t8]    Minimum attained at rank      35: 0.103391
+[t8]    Maximum attained at rank      18: 0.103525
+[t8] Summary = [ 0.00318709 0.0491988 0.0386549 0.10346 ];
+[t8] Maximum = [ 0.00319053 0.0495589 0.0386802 0.103525 ];
+[1745580890.850807] [n10495:3080921:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930484] [n10495:3080906:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855588] [n10495:3080944:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.834986] [n10495:3080889:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.839872] [n10495:3080890:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.851561] [n10495:3080927:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930340] [n10495:3080940:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929722] [n10495:3080932:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.856124] [n10495:3080930:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929981] [n10495:3080935:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.849075] [n10495:3080892:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.832781] [n10495:3080912:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930493] [n10495:3080907:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.857460] [n10495:3080905:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.854807] [n10495:3080916:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930484] [n10495:3080909:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930279] [n10495:3080886:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929030] [n10495:3080895:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929609] [n10495:3080904:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.846034] [n10495:3080894:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855375] [n10495:3080938:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930599] [n10495:3080893:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930009] [n10495:3080915:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930517] [n10495:3080901:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930340] [n10495:3080942:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929731] [n10495:3080934:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.927200] [n10495:3080896:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.854836] [n10495:3080917:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930517] [n10495:3080899:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.850641] [n10495:3080914:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930517] [n10495:3080900:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929531] [n10495:3080931:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855538] [n10495:3080937:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.833236] [n10495:3080913:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930340] [n10495:3080939:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.823359] [n10495:3080891:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929993] [n10495:3080918:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930317] [n10495:3080884:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.857523] [n10495:3080923:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.856379] [n10495:3080887:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.927701] [n10495:3080897:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930500] [n10495:3080919:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.928028] [n10495:3080903:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.928001] [n10495:3080898:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929504] [n10495:3080946:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.856427] [n10495:3080908:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855108] [n10495:3080928:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930643] [n10495:3080925:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855588] [n10495:3080943:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.848824] [n10495:3080929:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930643] [n10495:3080924:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930290] [n10495:3080885:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.853493] [n10495:3080920:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.854218] [n10495:3080902:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.929537] [n10495:3080945:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.857285] [n10495:3080933:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.851573] [n10495:3080888:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.851796] [n10495:3080911:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930345] [n10495:3080941:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.855752] [n10495:3080936:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930643] [n10495:3080926:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.851520] [n10495:3080922:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745580890.930522] [n10495:3080910:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
