@@ -27,12 +27,9 @@
 #include <sc_statistics.h>
 #include <sc_functions.h>
 
-#include <t8_vtk/t8_vtk_writer.h>
-
 #include <t8_cmesh.h>
 #include <t8_cmesh/t8_cmesh_examples.h>
 #include <t8_cmesh_readmshfile.h>
-#include <t8_cmesh/t8_cmesh_partition.h>
 #include <t8_cmesh/t8_cmesh_examples.h>
 
 #include <t8_forest/t8_forest_general.h>
@@ -136,8 +133,8 @@ t8_band_adapt (t8_forest_t forest, t8_forest_t forest_from, t8_locidx_t which_tr
 }
 
 static void
-benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm, const int init_level, const int max_level, 
-  const bool no_vtk, const std::array<double, 2> &x_min_max, const double delta_t, const double max_time)
+benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, const int max_level, const std::array<double, 2> &x_min_max, 
+                      const double delta_t, const double max_time)
 {
   double adapt_time = 0;
   double partition_time = 0;
@@ -196,15 +193,6 @@ benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm,
     t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
     forest = forest_partition;
 
-    if (!no_vtk) {
-      char forest_vtu[BUFSIZ];
-      char cmesh_vtu[BUFSIZ];
-      snprintf (forest_vtu, BUFSIZ, "%s_forest_partition_%03d", vtu_prefix, num_steps);
-      snprintf (cmesh_vtu, BUFSIZ, "%s_cmesh_partition_%03d", vtu_prefix, num_steps);
-      t8_forest_write_vtk (forest_partition, forest_vtu);
-      t8_cmesh_vtk_write_file (t8_forest_get_cmesh (forest_partition), cmesh_vtu);
-      t8_debugf ("Wrote partitioned forest and cmesh\n");
-    }
     t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
     t8_forest_print_profile (forest_partition);
     t8_forest_unref (&forest_adapt);
@@ -230,7 +218,6 @@ main (int argc, char **argv)
   /* Initialize MPI. This has to happen before we initialize sc or t8code. */
   int mpiret = sc_MPI_Init (&argc, &argv);
   int help = 0;
-  int no_vtk;
   const char *mshfileprefix = NULL;
   int dim;
   int initial_level;
@@ -247,12 +234,11 @@ main (int argc, char **argv)
   /* Initialize the sc library, has to happen before we initialize t8code. */
   sc_init (sc_MPI_COMM_WORLD, 1, 1, NULL, SC_LP_ESSENTIAL);
   /* Initialize t8code with log level SC_LP_PRODUCTION. See sc.h for more info on the log levels. */
-  t8_init (SC_LP_PRODUCTION);
+  t8_init (SC_LP_ESSENTIAL);
 
   sc_options_t *options = sc_options_new (argv[0]);
 
   sc_options_add_switch (options, 'h', "help", &help, "Print this help message and exit");
-  sc_options_add_switch (options, 'o', "no-vtk", &no_vtk, "Do not write vtk output.");
   sc_options_add_string (options, 'f', "mshfile", &mshfileprefix, NULL,
                          "If specified, the cmesh is constructed from a .msh file with the given prefix. "
                          "The files must end in .msh and be created with gmsh.");
@@ -308,12 +294,11 @@ main (int argc, char **argv)
   t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
   const int max_level = initial_level + level_diff;
   for (int irun = 0; irun < num_runs; ++irun) {
-    t8_global_productionf ("#################### Run %d of %d ####################\n", irun + 1, num_runs);
+    t8_global_essentialf ("#################### Run %d of %d ####################\n", irun + 1, num_runs);
     t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level, eclass);
 
 
-    benchmark_band_adapt (cmesh, "benchmark", sc_MPI_COMM_WORLD, initial_level, max_level, no_vtk, 
-      x_min_max, delta_t, T);
+    benchmark_band_adapt (cmesh,  sc_MPI_COMM_WORLD, initial_level, max_level, x_min_max, delta_t, T);
   }
 
   sc_options_destroy (options);
