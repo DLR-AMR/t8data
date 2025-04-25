@@ -62,14 +62,15 @@ typedef struct
  * \return t8_cmesh_t 
  */
 t8_cmesh_t
-t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_MPI_Comm comm, const int init_level)
+t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_MPI_Comm comm, const int init_level, [[ maybe_unused ]]const t8_eclass_t eclass)
 {
   t8_cmesh_t cmesh;
   if (msh_file != NULL){
     cmesh = t8_cmesh_from_msh_file ((char *) msh_file, 1, comm, mesh_dim, 0, false);
   }
   else {
-    cmesh = t8_cmesh_new_full_hybrid(comm);
+    T8_ASSERT (eclass != T8_ECLASS_INVALID);
+    cmesh = t8_cmesh_new_from_class (eclass, comm);
   }
   t8_cmesh_t cmesh_partition;
   t8_cmesh_init (&cmesh_partition);
@@ -237,6 +238,8 @@ main (int argc, char **argv)
   std::array<double, 2> x_min_max;
   double T;
   double cfl = 0;
+  int eclass_int;
+  int num_runs;
 
   /* Error check the MPI return value. */
   SC_CHECK_MPI (mpiret);
@@ -253,6 +256,9 @@ main (int argc, char **argv)
   sc_options_add_string (options, 'f', "mshfile", &mshfileprefix, NULL,
                          "If specified, the cmesh is constructed from a .msh file with the given prefix. "
                          "The files must end in .msh and be created with gmsh.");
+  sc_options_add_int (options, 'e', "eclass", &eclass_int, 0,
+                      "If no mshfile is given, the cmesh is created with the given element class. "
+                      "0: Tetrahedron, 1: Hexahedron, 2: Prism, 3: Pyramid");
   sc_options_add_int (options, 'd', "dim", &dim, 2, "Together with -f: The dimension of the coarse mesh. 2 or 3.");
   sc_options_add_int (options, 'l', "level", &initial_level, 0, "The initial uniform refinement level of the forest.");
   sc_options_add_int (options, 'r', "rlevel", &level_diff, 1,
@@ -264,6 +270,8 @@ main (int argc, char **argv)
   /* CFL number. delta_t = CFL * 0.64 / 2^level */
   sc_options_add_double (options, 'C', "cfl", &cfl, 0,
                          "The CFL number. If specified, then delta_t is set to CFL * 0.64 / 2^level. ");
+  sc_options_add_int (options, 'n', "num-runs", &num_runs, 1,
+                          "The number of runs to perform. If specified, the program will run num_runs times with the same parameters. ");
   
   const int options_argc = sc_options_parse (t8_get_package_id (), SC_LP_DEFAULT, options, argc, argv);
 
@@ -275,13 +283,38 @@ main (int argc, char **argv)
   const double delta_t = cfl * 0.64 / (1 << initial_level);
   t8_global_productionf ("Using CFL %f, delta_t = %f\n", cfl, delta_t);
 
+  t8_eclass_t eclass = T8_ECLASS_INVALID;
+
+  switch (eclass_int)
+  {
+  case 0:
+    eclass = T8_ECLASS_TET;
+    break;
+  case 1:
+    eclass = T8_ECLASS_HEX;
+    break;
+  case 2:
+    eclass = T8_ECLASS_PRISM;
+    break;
+  case 3:
+    eclass = T8_ECLASS_PYRAMID;
+    break;
+  default:
+    break;
+  }
+
+  T8_ASSERT (mshfileprefix != NULL || eclass != T8_ECLASS_INVALID);
+
   t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
-  t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
-
   const int max_level = initial_level + level_diff;
+  for (int irun = 0; irun < num_runs; ++irun) {
+    t8_global_productionf ("#################### Run %d of %d ####################\n", irun + 1, num_runs);
+    t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level, eclass);
 
-  benchmark_band_adapt (cmesh, "benchmark", sc_MPI_COMM_WORLD, initial_level, max_level, no_vtk, 
-    x_min_max, delta_t, T);
+
+    benchmark_band_adapt (cmesh, "benchmark", sc_MPI_COMM_WORLD, initial_level, max_level, no_vtk, 
+      x_min_max, delta_t, T);
+  }
 
   sc_options_destroy (options);
   sc_finalize ();
