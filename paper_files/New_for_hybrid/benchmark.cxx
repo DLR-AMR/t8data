@@ -36,7 +36,6 @@
 #include <t8_forest/t8_forest_profiling.h>
 #include <t8_forest/t8_forest_geometrical.h>
 #include <t8_forest/t8_forest_io.h>
-#include <t8_forest/t8_forest_types.h>
 
 #include <t8_schemes/t8_default/t8_default.hxx>
 
@@ -178,9 +177,8 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
     adapt_data.c_max = x_min_max[1] + time ;
 
     t8_forest_set_user_data (forest_adapt, (void *)&adapt_data);
-    adapt_time -= sc_MPI_Wtime ();
     t8_forest_commit (forest_adapt);
-    adapt_time += sc_MPI_Wtime ();
+    adapt_time += t8_forest_profile_get_adapt_time(forest_adapt);
 
     t8_forest_ref (forest_adapt);
 
@@ -193,11 +191,10 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
  
     t8_forest_commit (forest_partition);
     forest = forest_partition;
-
-    t8_profile_t *profile = forest_partition->profile;
-
-    partition_time = profile->partition_runtime;
-    ghost_time = profile->ghost_runtime;
+    int ghost_sent = 0;
+    int procs_sent = 0;
+    partition_time += t8_forest_profile_get_partition_time (forest_partition, &procs_sent);
+    ghost_time += t8_forest_profile_get_ghost_time (forest_partition, &ghost_sent);
 
 
     t8_forest_unref (&forest_adapt);
