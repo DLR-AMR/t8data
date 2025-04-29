@@ -36,6 +36,7 @@
 #include <t8_forest/t8_forest_profiling.h>
 #include <t8_forest/t8_forest_geometrical.h>
 #include <t8_forest/t8_forest_io.h>
+#include <t8_forest/t8_forest_types.h>
 
 #include <t8_schemes/t8_default/t8_default.hxx>
 
@@ -67,7 +68,7 @@ t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_M
   }
   else {
     T8_ASSERT (eclass != T8_ECLASS_INVALID);
-    cmesh = t8_cmesh_new_from_class (eclass, comm);
+    cmesh = t8_cmesh_new_hypercube ( eclass, comm, 0, 0, 0);
   }
   t8_cmesh_t cmesh_partition;
   t8_cmesh_init (&cmesh_partition);
@@ -134,18 +135,20 @@ t8_band_adapt (t8_forest_t forest, t8_forest_t forest_from, t8_locidx_t which_tr
 
 static void
 benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, const int max_level, const std::array<double, 2> &x_min_max, 
-                      const double delta_t, const double max_time)
+                      const double delta_t, const double max_time, const int do_ghost)
 {
   double adapt_time = 0;
   double partition_time = 0;
   double new_time = 0;
   double total_time = 0;
-  const int num_stats = 4;
+  double ghost_time = 0;
+  const int num_stats = 5;
   std::array<sc_statinfo_t, num_stats> times;
   sc_stats_init (&times[0], "new");
   sc_stats_init (&times[1], "adapt");
   sc_stats_init (&times[2], "partition");
-  sc_stats_init (&times[3], "total");
+  sc_stats_init (&times[3], "ghost");
+  sc_stats_init (&times[4], "total");
 
   t8_forest_t forest;
   t8_forest_init (&forest);
@@ -179,22 +182,24 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
     t8_forest_commit (forest_adapt);
     adapt_time += sc_MPI_Wtime ();
 
-    t8_forest_compute_profile (forest_adapt);
     t8_forest_ref (forest_adapt);
 
     t8_forest_init (&forest_partition);
     t8_forest_set_partition(forest_partition, forest_adapt, 0);
     t8_forest_set_profiling (forest_partition, 1);
+    if (do_ghost) {
+      t8_forest_set_ghost (forest_partition, 1, T8_GHOST_FACES);
+    }
  
-    partition_time -= sc_MPI_Wtime ();
     t8_forest_commit (forest_partition);
-    partition_time += sc_MPI_Wtime ();
-    t8_forest_compute_profile (forest_partition);
-    t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
     forest = forest_partition;
 
-    t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
-    t8_forest_print_profile (forest_partition);
+    t8_profile_t *profile = forest_partition->profile;
+
+    partition_time = profile->partition_runtime;
+    ghost_time = profile->ghost_runtime;
+
+
     t8_forest_unref (&forest_adapt);
   }
   
@@ -205,7 +210,8 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   sc_stats_accumulate (&times[0], new_time);
   sc_stats_accumulate (&times[1], adapt_time);
   sc_stats_accumulate (&times[2], partition_time);
-  sc_stats_accumulate (&times[3], total_time);
+  sc_stats_accumulate (&times[3], ghost_time);
+  sc_stats_accumulate (&times[4], total_time);
   sc_stats_compute (comm, num_stats, times.data ());
   sc_stats_print (t8_get_package_id (), SC_LP_ESSENTIAL, num_stats, times.data (), 1, 1);
   t8_forest_unref (&forest_partition);
@@ -227,6 +233,7 @@ main (int argc, char **argv)
   double cfl = 0;
   int eclass_int;
   int num_runs;
+  int do_ghost;
 
   /* Error check the MPI return value. */
   SC_CHECK_MPI (mpiret);
@@ -234,7 +241,7 @@ main (int argc, char **argv)
   /* Initialize the sc library, has to happen before we initialize t8code. */
   sc_init (sc_MPI_COMM_WORLD, 1, 1, NULL, SC_LP_ESSENTIAL);
   /* Initialize t8code with log level SC_LP_PRODUCTION. See sc.h for more info on the log levels. */
-  t8_init (SC_LP_ESSENTIAL);
+  t8_init (SC_LP_PRODUCTION);
 
   sc_options_t *options = sc_options_new (argv[0]);
 
@@ -249,6 +256,7 @@ main (int argc, char **argv)
   sc_options_add_int (options, 'l', "level", &initial_level, 0, "The initial uniform refinement level of the forest.");
   sc_options_add_int (options, 'r', "rlevel", &level_diff, 1,
                       "The number of levels that the forest is refined from the initial level.");
+  sc_options_add_switch (options, 'g', "ghost", &do_ghost, "If specified, the forest is created with ghost cells.");
   sc_options_add_double (options, 'x', "xmin", &x_min_max[0], 0, "The minimum x coordinate in the mesh.");
   sc_options_add_double (options, 'X', "xmax", &x_min_max[1], 1, "The maximum x coordinate in the mesh.");
   sc_options_add_double (options, 'T', "time", &T, 1,
@@ -298,7 +306,7 @@ main (int argc, char **argv)
     t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level, eclass);
 
 
-    benchmark_band_adapt (cmesh,  sc_MPI_COMM_WORLD, initial_level, max_level, x_min_max, delta_t, T);
+    benchmark_band_adapt (cmesh,  sc_MPI_COMM_WORLD, initial_level, max_level, x_min_max, delta_t, T, do_ghost);
   }
 
   sc_options_destroy (options);
