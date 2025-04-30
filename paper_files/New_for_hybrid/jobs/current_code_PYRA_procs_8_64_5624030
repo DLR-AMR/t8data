@@ -1,0 +1,1416 @@
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark_elems -e3 -l7 -n3 -N8 with 8 procs ------------
+[1745998632.165562] [n10406:587624:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] CXX                      /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/g++
+[t8] CXXFLAGS                  -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] CC                       /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/gcc
+[t8] CFLAGS                    -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] LDFLAGS                  
+[t8] LIBS                     P4EST::P4EST SC::SC MPI::MPI_C
+[t8] #################### Run 1 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 0.609018 -0.609018
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 2.276029 1.667011
+[t8] Enter  forest partition.
+[t8] Start partition 2.278761 2.278761
+[t8] End partition 2.796255 0.517493
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 3.422423  -3.422423
+[t8] End ghost at 5.087472  1.665049
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 5.087532 -5.087532
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 8.126416 3.038884
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 8.390634  -8.390634
+[t8] End ghost at 10.053946  1.663312
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.603631 (1.82e-05 = 0.00302%)
+[t8]    Minimum attained at rank       4: 0.603611
+[t8]    Maximum attained at rank       7: 0.603667
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.66691 (3.91e-05 = 0.00234%)
+[t8]    Minimum attained at rank       1: 1.66687
+[t8]    Maximum attained at rank       0: 1.66701
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.518157 (0.000838 = 0.162%)
+[t8]    Minimum attained at rank       4: 0.516356
+[t8]    Maximum attained at rank       3: 0.519212
+[t8] Statistics for   ghost
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.66229 (0.00227 = 0.136%)
+[t8]    Minimum attained at rank       2: 1.65671
+[t8]    Maximum attained at rank       4: 1.66387
+[t8] Statistics for   balance
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           5.58626 (1.69e-05 = 0.000303%)
+[t8]    Minimum attained at rank       7: 5.58623
+[t8]    Maximum attained at rank       0: 5.58628
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           10.0515 (1.96e-05 = 0.000195%)
+[t8]    Minimum attained at rank       1: 10.0515
+[t8]    Maximum attained at rank       7: 10.0516
+[t8] Summary = [ 0.603631 1.66691 0.518157 1.66229 5.58626 10.0515 ];
+[t8] Maximum = [ 0.603667 1.66701 0.519212 1.66387 5.58628 10.0516 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 10.654472 -10.654472
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 12.318355 1.663882
+[t8] Enter  forest partition.
+[t8] Start partition 12.321239 12.321239
+[t8] End partition 12.839405 0.518165
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 13.464339  -13.464339
+[t8] End ghost at 15.134925  1.670586
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 15.134984 -15.134984
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 18.274642 3.139658
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 18.539609  -18.539609
+[t8] End ghost at 20.199220  1.659610
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.592147 (1e-06 = 0.000169%)
+[t8]    Minimum attained at rank       1: 0.592145
+[t8]    Maximum attained at rank       5: 0.592148
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.66386 (8.58e-06 = 0.000516%)
+[t8]    Minimum attained at rank       7: 1.66386
+[t8]    Maximum attained at rank       0: 1.66388
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.517414 (0.00126 = 0.243%)
+[t8]    Minimum attained at rank       4: 0.515515
+[t8]    Maximum attained at rank       2: 0.519102
+[t8] Statistics for   ghost
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.66181 (0.00322 = 0.194%)
+[t8]    Minimum attained at rank       1: 1.65878
+[t8]    Maximum attained at rank       4: 1.6662
+[t8] Statistics for   balance
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           5.69356 (5.3e-06 = 9.31e-05%)
+[t8]    Minimum attained at rank       6: 5.69356
+[t8]    Maximum attained at rank       1: 5.69358
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           10.1454 (5.04e-06 = 4.97e-05%)
+[t8]    Minimum attained at rank       1: 10.1454
+[t8]    Maximum attained at rank       0: 10.1454
+[t8] Summary = [ 0.592147 1.66386 0.517414 1.66181 5.69356 10.1454 ];
+[t8] Maximum = [ 0.592148 1.66388 0.519102 1.6662 5.69358 10.1454 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 20.807497 -20.807497
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 22.474807 1.667309
+[t8] Enter  forest partition.
+[t8] Start partition 22.477252 22.477252
+[t8] End partition 22.996039 0.518786
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 23.620858  -23.620858
+[t8] End ghost at 25.289649  1.668791
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 25.289707 -25.289707
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 28.331274 3.041567
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 17968320 local elements.
+[t8] Start ghost at 28.596217  -28.596217
+[t8] End ghost at 30.260103  1.663886
+[t8] Done t8_forest_ghost with 17968320 local elements and 112865 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.595044 (1.12e-06 = 0.000188%)
+[t8]    Minimum attained at rank       1: 0.595042
+[t8]    Maximum attained at rank       5: 0.595046
+[t8] Statistics for   adapt
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.66728 (9.21e-06 = 0.000553%)
+[t8]    Minimum attained at rank       5: 1.66728
+[t8]    Maximum attained at rank       0: 1.66731
+[t8] Statistics for   partition
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           0.518769 (0.000868 = 0.167%)
+[t8]    Minimum attained at rank       5: 0.51713
+[t8]    Maximum attained at rank       3: 0.519907
+[t8] Statistics for   ghost
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           1.6649 (0.00541 = 0.325%)
+[t8]    Minimum attained at rank       2: 1.65492
+[t8]    Maximum attained at rank       4: 1.67119
+[t8] Statistics for   balance
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           5.59321 (3.91e-06 = 7e-05%)
+[t8]    Minimum attained at rank       7: 5.5932
+[t8]    Maximum attained at rank       5: 5.59321
+[t8] Statistics for   total
+[t8]    Global number of values:       8
+[t8]    Mean value (std. dev.):           10.0568 (4.83e-06 = 4.8e-05%)
+[t8]    Minimum attained at rank       3: 10.0568
+[t8]    Maximum attained at rank       4: 10.0568
+[t8] Summary = [ 0.595044 1.66728 0.518769 1.6649 5.59321 10.0568 ];
+[t8] Maximum = [ 0.595046 1.66731 0.519907 1.67119 5.59321 10.0568 ];
+[1745998632.165479] [n10406:587627:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.165968] [n10406:587626:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.164550] [n10406:587625:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.165961] [n10406:587628:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.164730] [n10406:587629:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.165680] [n10406:587630:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998632.166162] [n10406:587631:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark_elems -e3 -l7 -n3 -N8 with 16 procs ------------
+[1745998663.561665] [n10406:587687:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] CXX                      /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/g++
+[t8] CXXFLAGS                  -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] CC                       /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/gcc
+[t8] CFLAGS                    -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] LDFLAGS                  
+[t8] LIBS                     P4EST::P4EST SC::SC MPI::MPI_C
+[t8] #################### Run 1 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 0.369909 -0.369909
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 1.204691 0.834782
+[t8] Enter  forest partition.
+[t8] Start partition 1.207836 1.207836
+[t8] End partition 1.468960 0.261123
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 1.781775  -1.781775
+[t8] End ghost at 3.002872  1.221096
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 3.002930 -3.002930
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 4.517194 1.514264
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 4.653567  -4.653567
+[t8] End ghost at 5.880015  1.226448
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.353102 (3.25e-05 = 0.00921%)
+[t8]    Minimum attained at rank       3: 0.353054
+[t8]    Maximum attained at rank       0: 0.353144
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.83473 (4.63e-05 = 0.00554%)
+[t8]    Minimum attained at rank       4: 0.834691
+[t8]    Maximum attained at rank       2: 0.834882
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.259811 (0.00121 = 0.467%)
+[t8]    Minimum attained at rank      12: 0.25692
+[t8]    Maximum attained at rank      11: 0.261143
+[t8] Statistics for   ghost
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           1.22421 (0.00232 = 0.189%)
+[t8]    Minimum attained at rank       9: 1.22078
+[t8]    Maximum attained at rank      14: 1.22666
+[t8] Statistics for   balance
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           3.1788 (7.09e-05 = 0.00223%)
+[t8]    Minimum attained at rank      15: 3.17873
+[t8]    Maximum attained at rank       3: 3.17894
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           5.86492 (3.45e-05 = 0.000588%)
+[t8]    Minimum attained at rank       3: 5.86487
+[t8]    Maximum attained at rank       5: 5.86497
+[t8] Summary = [ 0.353102 0.83473 0.259811 1.22421 3.1788 5.86492 ];
+[t8] Maximum = [ 0.353144 0.834882 0.261143 1.22666 3.17894 5.86497 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 6.218962 -6.218962
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 7.056384 0.837421
+[t8] Enter  forest partition.
+[t8] Start partition 7.059097 7.059097
+[t8] End partition 7.321084 0.261986
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 7.634667  -7.634667
+[t8] End ghost at 8.866121  1.231454
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 8.866177 -8.866177
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 10.387015 1.520838
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 10.521714  -10.521714
+[t8] End ghost at 11.741652  1.219938
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.333831 (8.11e-07 = 0.000243%)
+[t8]    Minimum attained at rank       1: 0.333829
+[t8]    Maximum attained at rank      10: 0.333832
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.837395 (7.13e-06 = 0.000851%)
+[t8]    Minimum attained at rank      11: 0.837389
+[t8]    Maximum attained at rank       0: 0.837421
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.26169 (0.000843 = 0.322%)
+[t8]    Minimum attained at rank       8: 0.259584
+[t8]    Maximum attained at rank      12: 0.262912
+[t8] Statistics for   ghost
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           1.22191 (0.00216 = 0.176%)
+[t8]    Minimum attained at rank       1: 1.21887
+[t8]    Maximum attained at rank       4: 1.22528
+[t8] Statistics for   balance
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           3.19498 (1.05e-05 = 0.00033%)
+[t8]    Minimum attained at rank      11: 3.19497
+[t8]    Maximum attained at rank       0: 3.19501
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           5.86313 (1.13e-05 = 0.000193%)
+[t8]    Minimum attained at rank       1: 5.86312
+[t8]    Maximum attained at rank      11: 5.86317
+[t8] Summary = [ 0.333831 0.837395 0.26169 1.22191 3.19498 5.86313 ];
+[t8] Maximum = [ 0.333832 0.837421 0.262912 1.22528 3.19501 5.86317 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 12.093753 -12.093753
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 12.931651 0.837898
+[t8] Enter  forest partition.
+[t8] Start partition 12.934474 12.934473
+[t8] End partition 13.195855 0.261381
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 13.510008  -13.510008
+[t8] End ghost at 14.737543  1.227535
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 14.737599 -14.737598
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 16.260272 1.522673
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 8984160 local elements.
+[t8] Start ghost at 16.395468  -16.395468
+[t8] End ghost at 17.619500  1.224031
+[t8] Done t8_forest_ghost with 8984160 local elements and 90412 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.341693 (8.47e-07 = 0.000248%)
+[t8]    Minimum attained at rank       0: 0.341691
+[t8]    Maximum attained at rank      10: 0.341694
+[t8] Statistics for   adapt
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.837875 (6.3e-06 = 0.000752%)
+[t8]    Minimum attained at rank      10: 0.837871
+[t8]    Maximum attained at rank       0: 0.837898
+[t8] Statistics for   partition
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           0.261623 (0.00119 = 0.456%)
+[t8]    Minimum attained at rank       3: 0.258692
+[t8]    Maximum attained at rank       8: 0.263051
+[t8] Statistics for   ghost
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           1.22582 (0.00585 = 0.478%)
+[t8]    Minimum attained at rank      13: 1.21908
+[t8]    Maximum attained at rank       4: 1.23473
+[t8] Statistics for   balance
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           3.19295 (9.99e-06 = 0.000313%)
+[t8]    Minimum attained at rank       7: 3.19294
+[t8]    Maximum attained at rank       0: 3.19298
+[t8] Statistics for   total
+[t8]    Global number of values:      16
+[t8]    Mean value (std. dev.):           5.87934 (1.14e-05 = 0.000194%)
+[t8]    Minimum attained at rank       3: 5.87933
+[t8]    Maximum attained at rank       4: 5.87938
+[t8] Summary = [ 0.341693 0.837875 0.261623 1.22582 3.19295 5.87934 ];
+[t8] Maximum = [ 0.341694 0.837898 0.263051 1.23473 3.19298 5.87938 ];
+[1745998663.557007] [n10406:587689:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561061] [n10406:587691:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561971] [n10406:587694:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561590] [n10406:587699:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.562405] [n10406:587692:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561628] [n10406:587695:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.546737] [n10406:587697:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561238] [n10406:587688:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.562231] [n10406:587693:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.562201] [n10406:587698:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.560871] [n10406:587701:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.562017] [n10406:587700:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561719] [n10406:587702:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.552487] [n10406:587696:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998663.561952] [n10406:587690:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark_elems -e3 -l7 -n3 -N8 with 32 procs ------------
+[1745998682.457736] [n10406:587791:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] CXX                      /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/g++
+[t8] CXXFLAGS                  -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] CC                       /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/gcc
+[t8] CFLAGS                    -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] LDFLAGS                  
+[t8] LIBS                     P4EST::P4EST SC::SC MPI::MPI_C
+[t8] #################### Run 1 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 0.225556 -0.225556
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 0.653818 0.428261
+[t8] Enter  forest partition.
+[t8] Start partition 0.660008 0.660008
+[t8] End partition 0.812729 0.152721
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 0.988188  -0.988187
+[t8] End ghost at 1.837413  0.849225
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 1.837485 -1.837485
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 2.598997 0.761512
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 2.672038  -2.672037
+[t8] End ghost at 3.519366  0.847328
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.213596 (6.94e-05 = 0.0325%)
+[t8]    Minimum attained at rank      13: 0.213492
+[t8]    Maximum attained at rank       3: 0.213734
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.428103 (9.28e-05 = 0.0217%)
+[t8]    Minimum attained at rank      14: 0.428033
+[t8]    Maximum attained at rank       2: 0.428399
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.136941 (0.0092 = 6.72%)
+[t8]    Minimum attained at rank       9: 0.129246
+[t8]    Maximum attained at rank      24: 0.154366
+[t8] Statistics for   ghost
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.84814 (0.00105 = 0.124%)
+[t8]    Minimum attained at rank      17: 0.845307
+[t8]    Maximum attained at rank      21: 0.849686
+[t8] Statistics for   balance
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           1.85079 (0.000103 = 0.00556%)
+[t8]    Minimum attained at rank       6: 1.85067
+[t8]    Maximum attained at rank       3: 1.85104
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           3.51089 (7.5e-05 = 0.00214%)
+[t8]    Minimum attained at rank       4: 3.51078
+[t8]    Maximum attained at rank       3: 3.51107
+[t8] Summary = [ 0.213596 0.428103 0.136941 0.84814 1.85079 3.51089 ];
+[t8] Maximum = [ 0.213734 0.428399 0.154366 0.849686 1.85104 3.51107 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 3.708005 -3.708005
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 4.132584 0.424578
+[t8] Enter  forest partition.
+[t8] Start partition 4.141595 4.141595
+[t8] End partition 4.293746 0.152151
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 4.453189  -4.453189
+[t8] End ghost at 5.304179  0.850990
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 5.304254 -5.304254
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 6.071291 0.767037
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 6.143519  -6.143519
+[t8] End ghost at 6.990510  0.846990
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.181542 (1.05e-06 = 0.000577%)
+[t8]    Minimum attained at rank       1: 0.181539
+[t8]    Maximum attained at rank      12: 0.181544
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.424548 (1.02e-05 = 0.00241%)
+[t8]    Minimum attained at rank      14: 0.42453
+[t8]    Maximum attained at rank       0: 0.424578
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.136891 (0.00892 = 6.52%)
+[t8]    Minimum attained at rank      17: 0.130155
+[t8]    Maximum attained at rank       8: 0.153986
+[t8] Statistics for   ghost
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.846918 (0.000652 = 0.077%)
+[t8]    Minimum attained at rank      25: 0.845333
+[t8]    Maximum attained at rank      29: 0.848202
+[t8] Statistics for   balance
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           1.84199 (1.9e-05 = 0.00103%)
+[t8]    Minimum attained at rank       0: 1.84196
+[t8]    Maximum attained at rank       4: 1.84204
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           3.46617 (1.47e-05 = 0.000423%)
+[t8]    Minimum attained at rank      28: 3.46614
+[t8]    Maximum attained at rank       0: 3.4662
+[t8] Summary = [ 0.181542 0.424548 0.136891 0.846918 1.84199 3.46617 ];
+[t8] Maximum = [ 0.181544 0.424578 0.153986 0.848202 1.84204 3.4662 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 7.177491 -7.177491
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 7.601424 0.423933
+[t8] Enter  forest partition.
+[t8] Start partition 7.610480 7.610480
+[t8] End partition 7.760453 0.149972
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 7.922001  -7.922001
+[t8] End ghost at 8.771904  0.849903
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 8.771976 -8.771976
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 9.538156 0.766180
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 4492080 local elements.
+[t8] Start ghost at 9.610110  -9.610110
+[t8] End ghost at 10.455929  0.845818
+[t8] Done t8_forest_ghost with 4492080 local elements and 53177 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.181296 (8.84e-07 = 0.000488%)
+[t8]    Minimum attained at rank      24: 0.181294
+[t8]    Maximum attained at rank       2: 0.181298
+[t8] Statistics for   adapt
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.423905 (1.02e-05 = 0.0024%)
+[t8]    Minimum attained at rank       2: 0.423884
+[t8]    Maximum attained at rank       0: 0.423933
+[t8] Statistics for   partition
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.135763 (0.00934 = 6.88%)
+[t8]    Minimum attained at rank      14: 0.126701
+[t8]    Maximum attained at rank       8: 0.15403
+[t8] Statistics for   ghost
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           0.846927 (0.000955 = 0.113%)
+[t8]    Minimum attained at rank       5: 0.843623
+[t8]    Maximum attained at rank      21: 0.848341
+[t8] Statistics for   balance
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           1.83999 (1.63e-05 = 0.000887%)
+[t8]    Minimum attained at rank       0: 1.83996
+[t8]    Maximum attained at rank      10: 1.84004
+[t8] Statistics for   total
+[t8]    Global number of values:      32
+[t8]    Mean value (std. dev.):           3.46315 (1.7e-05 = 0.00049%)
+[t8]    Minimum attained at rank       2: 3.46312
+[t8]    Maximum attained at rank       0: 3.46319
+[t8] Summary = [ 0.181296 0.423905 0.135763 0.846927 1.83999 3.46315 ];
+[t8] Maximum = [ 0.181298 0.423933 0.15403 0.848341 1.84004 3.46319 ];
+[1745998682.563912] [n10406:587815:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564257] [n10406:587816:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.539667] [n10406:587792:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.540077] [n10406:587799:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.487371] [n10406:587804:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564001] [n10406:587801:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564617] [n10406:587808:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.485212] [n10406:587795:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.460319] [n10406:587817:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.561064] [n10406:587793:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564617] [n10406:587807:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.485741] [n10406:587796:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.563893] [n10406:587821:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564638] [n10406:587813:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564493] [n10406:587814:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.555244] [n10406:587800:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.444988] [n10406:587822:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564331] [n10406:587820:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.563331] [n10406:587805:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564617] [n10406:587809:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564702] [n10406:587810:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.563900] [n10406:587802:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564493] [n10406:587811:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.563727] [n10406:587794:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.484843] [n10406:587812:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.550130] [n10406:587806:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.445072] [n10406:587798:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.563853] [n10406:587797:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.549943] [n10406:587803:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564242] [n10406:587819:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998682.564075] [n10406:587818:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+-------------  Running: /scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark_elems -e3 -l7 -n3 -N8 with 64 procs ------------
+[1745998695.238362] [n10406:587988:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[libsc] This is libsc 2.8.6.999
+[t8] This is t8 4.0.0
+[t8] CXX                      /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/g++
+[t8] CXXFLAGS                  -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] CC                       /sw/spack/rev23.05/linux-centos7-x86_64_v3/gcc-4.8.5/gcc-10.4.0-wm3izcnn25u2kkibsrqapna2ryf43ovp/bin/gcc
+[t8] CFLAGS                    -O3 -DNDEBUG -Wall -Werror -Wextra
+[t8] LDFLAGS                  
+[t8] LIBS                     P4EST::P4EST SC::SC MPI::MPI_C
+[t8] #################### Run 1 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 0.268576 -0.268576
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 0.493345 0.224769
+[t8] Enter  forest partition.
+[t8] Start partition 0.501933 0.501933
+[t8] End partition 0.586152 0.084218
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 0.695270  -0.695270
+[t8] End ghost at 1.254068  0.558798
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 1.254124 -1.254124
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 1.636459 0.382335
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 1.690513  -1.690513
+[t8] End ghost at 2.244947  0.554433
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.161314 (0.000193 = 0.12%)
+[t8]    Minimum attained at rank       2: 0.161013
+[t8]    Maximum attained at rank      51: 0.161888
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.224565 (0.000182 = 0.0809%)
+[t8]    Minimum attained at rank      61: 0.224352
+[t8]    Maximum attained at rank       1: 0.225117
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0904643 (0.00795 = 8.78%)
+[t8]    Minimum attained at rank       7: 0.0823124
+[t8]    Maximum attained at rank      58: 0.102927
+[t8] Statistics for   ghost
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.54068 (0.0268 = 4.95%)
+[t8]    Minimum attained at rank      47: 0.492782
+[t8]    Maximum attained at rank      34: 0.561339
+[t8] Statistics for   balance
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           1.07462 (0.000207 = 0.0192%)
+[t8]    Minimum attained at rank      51: 1.07437
+[t8]    Maximum attained at rank      57: 1.07533
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           2.14609 (0.000196 = 0.00914%)
+[t8]    Minimum attained at rank       5: 2.14574
+[t8]    Maximum attained at rank      51: 2.14669
+[t8] Summary = [ 0.161314 0.224565 0.0904643 0.54068 1.07462 2.14609 ];
+[t8] Maximum = [ 0.161888 0.225117 0.102927 0.561339 1.07533 2.14669 ];
+[t8] #################### Run 2 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 2.391903 -2.391903
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 2.611082 0.219178
+[t8] Enter  forest partition.
+[t8] Start partition 2.620457 2.620457
+[t8] End partition 2.703606 0.083148
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 2.803402  -2.803401
+[t8] End ghost at 3.362998  0.559597
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 3.363051 -3.363051
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 3.750594 0.387543
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 3.802472  -3.802472
+[t8] End ghost at 4.356398  0.553925
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.134632 (1.96e-06 = 0.00145%)
+[t8]    Minimum attained at rank      48: 0.134625
+[t8]    Maximum attained at rank      17: 0.134636
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.219133 (5.35e-05 = 0.0244%)
+[t8]    Minimum attained at rank      34: 0.218926
+[t8]    Maximum attained at rank       0: 0.219178
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0896684 (0.0082 = 9.15%)
+[t8]    Minimum attained at rank      40: 0.0791312
+[t8]    Maximum attained at rank      58: 0.102084
+[t8] Statistics for   ghost
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.540127 (0.0264 = 4.89%)
+[t8]    Minimum attained at rank      63: 0.49231
+[t8]    Maximum attained at rank      18: 0.56119
+[t8] Statistics for   balance
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           1.07158 (3.88e-05 = 0.00362%)
+[t8]    Minimum attained at rank      17: 1.0715
+[t8]    Maximum attained at rank      19: 1.07165
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           2.10768 (4.26e-05 = 0.00202%)
+[t8]    Minimum attained at rank      58: 2.10759
+[t8]    Maximum attained at rank       4: 2.10775
+[t8] Summary = [ 0.134632 0.219133 0.0896684 0.540127 1.07158 2.10768 ];
+[t8] Maximum = [ 0.134636 0.219178 0.102084 0.56119 1.07165 2.10775 ];
+[t8] #################### Run 3 of 3 ####################
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 8 total elements
+[t8] Done t8_forest_adapt with 80 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 80 total elements
+[t8] Done t8_forest_adapt with 736 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 736 total elements
+[t8] Done t8_forest_adapt with 6464 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 6464 total elements
+[t8] Done t8_forest_adapt with 55168 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 55168 total elements
+[t8] Done t8_forest_adapt with 462080 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 462080 total elements
+[t8] Done t8_forest_adapt with 3821056 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_adapt from 3821056 total elements
+[t8] Done t8_forest_adapt with 31314944 total elements
+[t8] Enter  forest partition.
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Start adadpt 4.504393 -4.504393
+[t8] Into t8_forest_adapt from 31314944 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 4.723749 0.219356
+[t8] Enter  forest partition.
+[t8] Start partition 4.733301 4.733301
+[t8] End partition 4.817566 0.084264
+[t8] Done forest partition.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_balance with 143746560 global elements.
+[t8] Computed maximum occurring level:	8
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 4.924755  -4.924755
+[t8] End ghost at 5.484926  0.560171
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Profiling: 1
+[t8] Start adadpt 5.484984 -5.484984
+[t8] Into t8_forest_adapt from 143746560 total elements
+[t8] Done t8_forest_adapt with 143746560 total elements
+[t8] End adadpt 5.869347 0.384362
+[t8] Done t8_forest_balance with 143746560 global elements.
+[t8] Enter cmesh partition
+[t8] Done cmesh partition
+[t8] Into t8_forest_ghost with 2246040 local elements.
+[t8] Start ghost at 5.921206  -5.921206
+[t8] End ghost at 6.477020  0.555814
+[t8] Done t8_forest_ghost with 2246040 local elements and 35215 ghost elements.
+[t8] Statistics for   new
+[t8]    Global number of values:     128
+[t8]    Mean value (std. dev.):           0.135414 (1.52e-06 = 0.00112%)
+[t8]    Minimum attained at rank      41: 0.13541
+[t8]    Maximum attained at rank      29: 0.135417
+[t8] Statistics for   adapt
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.21931 (5.06e-05 = 0.0231%)
+[t8]    Minimum attained at rank      34: 0.219107
+[t8]    Maximum attained at rank       0: 0.219356
+[t8] Statistics for   partition
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.0901087 (0.0081 = 8.99%)
+[t8]    Minimum attained at rank      12: 0.081625
+[t8]    Maximum attained at rank      58: 0.102319
+[t8] Statistics for   ghost
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           0.5392 (0.0262 = 4.86%)
+[t8]    Minimum attained at rank      55: 0.493046
+[t8]    Maximum attained at rank      10: 0.556435
+[t8] Statistics for   balance
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           1.07718 (3.83e-05 = 0.00355%)
+[t8]    Minimum attained at rank       3: 1.07709
+[t8]    Maximum attained at rank       5: 1.07725
+[t8] Statistics for   total
+[t8]    Global number of values:      64
+[t8]    Mean value (std. dev.):           2.10981 (3.59e-05 = 0.0017%)
+[t8]    Minimum attained at rank       5: 2.10973
+[t8]    Maximum attained at rank       8: 2.10988
+[t8] Summary = [ 0.135414 0.21931 0.0901087 0.5392 1.07718 2.10981 ];
+[t8] Maximum = [ 0.135417 0.219356 0.102319 0.556435 1.07725 2.10988 ];
+[1745998695.238022] [n10406:588046:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238912] [n10406:587989:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.203267] [n10406:587997:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238045] [n10406:588019:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.234478] [n10406:588025:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238375] [n10406:587994:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238778] [n10406:588045:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.239137] [n10406:588018:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.225205] [n10406:588024:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.147782] [n10406:588027:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237591] [n10406:588037:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238022] [n10406:588044:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.239029] [n10406:587992:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.199506] [n10406:588002:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238188] [n10406:588017:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.236170] [n10406:588031:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237694] [n10406:587991:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238583] [n10406:588048:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238438] [n10406:588015:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.194840] [n10406:588022:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238883] [n10406:588036:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237593] [n10406:588010:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238870] [n10406:588039:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.229098] [n10406:588014:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237695] [n10406:588038:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238158] [n10406:588000:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238131] [n10406:587990:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.239062] [n10406:588041:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.211625] [n10406:588026:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238158] [n10406:588040:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.165717] [n10406:587996:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.210655] [n10406:588032:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238518] [n10406:588047:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237342] [n10406:588020:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238860] [n10406:588003:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238514] [n10406:588005:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.236628] [n10406:588006:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238045] [n10406:588016:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238497] [n10406:587993:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.179572] [n10406:587999:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238452] [n10406:588050:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238426] [n10406:588033:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.235890] [n10406:588034:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238646] [n10406:588029:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238236] [n10406:588001:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237047] [n10406:588030:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238126] [n10406:588013:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.236186] [n10406:588007:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.202691] [n10406:588011:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237866] [n10406:587995:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238612] [n10406:588004:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.180257] [n10406:588009:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238527] [n10406:588049:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238459] [n10406:588012:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238544] [n10406:588051:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237654] [n10406:587998:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.237948] [n10406:588028:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238660] [n10406:588042:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.174619] [n10406:588008:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238966] [n10406:588043:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.238294] [n10406:588035:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.185490] [n10406:588021:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1745998695.219894] [n10406:588023:0]          parser.c:1908 UCX  WARN  unused env variable: UCX_ROOT (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)

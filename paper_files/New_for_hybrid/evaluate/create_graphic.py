@@ -15,7 +15,8 @@ def extract_data(file_path, columns):
 # until the end of the file.
     data = []
     with open(file_path, 'r') as file:
-        for line in file:
+        lines = file.readlines()  # Read all lines into a list
+        for line in lines:
             if "-------------  Running:" in line and "with" in line and "procs" in line:
                 parts = line.split("-------------  Running:")[1].strip().split("with")
                 args = parts[0].strip()
@@ -32,18 +33,20 @@ def extract_data(file_path, columns):
                 # for each run we need to find the line containing:
                 # [t8] Summary = [ time time time .... time ];
                 current_run_summaries = []
-                for run_line in file:
+                for run_line in lines[lines.index(line) + 1:]:
                     if "[t8] #################### Run" in run_line:
+                        # find the number of the current run
+                        run_number = run_line.split("[t8] #################### Run")[1].split("of")[0].strip()
                         continue  # Skip the run header lines
-                    if "[t8] Summary =" in run_line:
+                    if "[t8] Summary = [" in run_line:
                         # Extract the summary data
                         summary_data = run_line.split("[t8] Summary = [")[1].split("]")[0].strip().split()
                         # Filter the times based on the specified columns
                         summary_data = [summary_data[col] for col in columns if col < len(summary_data)]
                         # Convert the summary data to floats and filter based on columns
                         current_run_summaries.append([float(value) for value in summary_data])
-                    if "-------------  Running: " in run_line:
-                        break  # Stop when the next run starts
+                    if "-------------  Running:" in run_line:
+                        break  # Exit the inner loop to reprocess the line in the outer loop
                 # Compute the average of the times, given by the columns
                 if current_run_summaries:
                     avg_summary = [sum(x) / len(x) for x in zip(*current_run_summaries)]
@@ -53,48 +56,75 @@ def extract_data(file_path, columns):
                     print("No summaries found for this run.")
     return data
 
-def create_graph(base_data, compare_data, names):
-# Create a graph comparing the base and compare data
-    plt.figure(figsize=(10, 6))
+def create_graphics(num_files, names, graph_name_base, graph_name_compare, data_base, data_compare, pyra_flag=True):
     for i in range(len(names)):
-        procs = [entry["procs"] for entry in base_data]
-        base_times = [entry["summaries"][i] for entry in base_data]
-        compare_times = [entry["summaries"][i] for entry in compare_data]
-        plt.plot(procs, base_times, label=f"{names[i]} Base")
-        plt.plot(procs, compare_times, label=f"{names[i]} Compare")
+        plt.figure(figsize=(10, 6))
         plt.xlabel('Number of Processes')
         plt.ylabel('Average Time (s)')
+        plt.xscale('log', base=2)
+        plt.yscale('log', base=2)
         plt.title('Performance Comparison')
-        plt.legend()
+        for ifile in range(int(num_files)):
+            procs = [entry["procs"] for entry in data_base[ifile]]
+            base_times = [entry["summaries"][i] for entry in data_base[ifile]]
+            compare_times = [entry["summaries"][i] for entry in data_compare[ifile]]
+            ideal_scaling = [base_times[0] / 2**iproc for iproc in range(len(procs))]
+            if ifile == 0:
+                plt.plot(procs, base_times, label=f"{names[i]} {graph_name_base} ", color='orange')
+                plt.plot(procs, compare_times, label=f"{names[i]} {graph_name_compare} ", color='blue')
+                plt.plot(procs, ideal_scaling, label=f"{names[i]} Ideal Scaling", color='black', linestyle='dashed')
+                for iproc in range(len(procs)):
+                    val = data_base[ifile][iproc]["summaries"][i]  # Use the first value in summaries as the reference
+                    ideal_weak_scaling= []
+                    if pyra_flag:
+                        ideal_weak_scaling = [val * ((2 * (8**i) - 6**i)/(8**i)) for i in range((int(num_files)))]
+                    else:
+                        ideal_weak_scaling = [val for _ in range(len(procs))]
+                    shifted_procs = [procs[iproc] * 8**i for i in range(int(num_files))]
+                    if iproc == 0:
+                        plt.plot(shifted_procs, ideal_weak_scaling, label=f"{names[i]} Ideal Weak Scaling", color='black', linestyle='dotted')
+                    else:
+                        plt.plot(shifted_procs, ideal_weak_scaling, color='black', linestyle='dotted')
+            else:   
+                plt.plot(procs, base_times, color='orange')
+                plt.plot(procs, compare_times, color='blue')
+                plt.plot(procs, ideal_scaling, color='black', linestyle='dashed')
+            
         plt.grid()
+        plt.legend()
         plt_name = f"graph_{names[i]}.png"
         plt.savefig(plt_name)
-        plt.figure(figsize=(10, 6))  # Start a new plot for the next comparison
         print(f"Graph saved as {plt_name}")
 
 
 def main():  
-    if len(sys.argv) != 5:
-        print("Usage: python3 create_graph.py <base_file> <compare_file> <names> <indices>")
-        print("Example: python3 create_graph.py base.txt compare.txt 'New,Adapt' '0,1'")
-        sys.exit(1)
+    num_files = sys.argv[1]
 
-    base = sys.argv[1]
-    compare = sys.argv[2]
-    names = sys.argv[3].split(',')
-    indices = list(map(int, sys.argv[4].split(',')))
+    base = sys.argv[2:2 + int(num_files)]
+    compare = sys.argv[2 + int(num_files):2 + 2 * int(num_files)]
+
+    additional_args_index = 2 + 2 * int(num_files)
+    names = sys.argv[additional_args_index].split(',')
+    indices = list(map(int, sys.argv[additional_args_index + 1].split(',')))
+
+    graph_name_base = sys.argv[additional_args_index + 2]
+    graph_name_compare = sys.argv[additional_args_index + 3]
 
     if len(names) != len(indices):
         print("Error: The number of names and indices must be the same.")
         sys.exit(1)
+    
 
-    print(f"Base file: {base}")
-    print(f"Compare file: {compare}")
+    data_base = []
+    data_compare = []
 
-    data_base = extract_data(base, indices)
-    data_compare = extract_data(compare, indices)
 
-    create_graph(data_base, data_compare, names)
+    for file in range(int(num_files)):
+        data_base.append(extract_data(base[file], indices))
+        data_compare.append(extract_data(compare[file], indices))
+
+    create_graphics(num_files, names, graph_name_base, graph_name_compare, data_base, data_compare)
+
 
 if __name__ == "__main__":
     main()
