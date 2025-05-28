@@ -27,7 +27,7 @@
 #include <sc_statistics.h>
 #include <sc_functions.h>
 
-#include <t8_cmesh.h>
+#include <t8_cmesh.hxx>
 #include <t8_cmesh/t8_cmesh_examples.h>
 #include <t8_cmesh_readmshfile.h>
 #include <t8_cmesh/t8_cmesh_examples.h>
@@ -40,9 +40,37 @@
 #include <t8_schemes/t8_default/t8_default.hxx>
 #include <t8_schemes/t8_default/t8_default_pyramid/t8_default_pyramid.hxx>
 
+#include <t8_geometry/t8_geometry_implementations/t8_geometry_linear.hxx>
 
 #include <t8_types/t8_vec.hxx>
 
+
+t8_cmesh_t two_tets (sc_MPI_Comm comm)
+{
+  t8_cmesh_t cmesh;
+  t8_cmesh_init (&cmesh);
+
+  double vertices [15] = {
+    0.0, 0.0, 0.0, //v0
+    0.0, 1.0, 0.0, //v1
+    1.0, 0.0, 0.0, //v2
+    0.0, 0.0, 1.0, //v3
+    1.0, 1.0, 1.0, //v4
+  };
+
+
+  t8_cmesh_set_tree_class (cmesh, 0, T8_ECLASS_TET);
+  t8_cmesh_set_tree_class (cmesh, 1, T8_ECLASS_TET);
+
+  t8_cmesh_set_join (cmesh, 0, 1, 0, 3, 0);
+
+  t8_cmesh_set_tree_vertices (cmesh, 0, vertices, 4);
+  t8_cmesh_set_tree_vertices (cmesh, 1, vertices + 3, 4);
+
+  t8_cmesh_register_geometry<t8_geometry_linear> (cmesh);
+  t8_cmesh_commit (cmesh, comm);
+  return cmesh;
+}
 
 /**
  * Create a partitioned cmesh. If no msh_file is given, a new hybrid cmesh is created.
@@ -54,17 +82,25 @@
  * \return t8_cmesh_t 
  */
 t8_cmesh_t
-t8_benchmark_forest_create_cmesh ( sc_MPI_Comm comm, const int init_level, const t8_eclass_t eclass, const int num_elems)
+t8_benchmark_forest_create_cmesh ( sc_MPI_Comm comm, const int init_level, const t8_eclass_t eclass)
 {
   T8_ASSERT (eclass != T8_ECLASS_INVALID);
-  t8_cmesh_t cmesh = t8_cmesh_new_bigmesh ( eclass, num_elems, comm);
+  t8_cmesh_t cmesh;
+  if (eclass == T8_ECLASS_TET) {
+    cmesh = two_tets (comm);
+  }
+  else if (eclass == T8_ECLASS_PYRAMID) {
+    cmesh = t8_cmesh_new_pyramid_cake (comm, 8);
+  }
+  else {
+    cmesh = t8_cmesh_new_hypercube (eclass, comm, false, false, false);
+  }
   t8_cmesh_t cmesh_partition;
   t8_cmesh_init (&cmesh_partition);
   t8_cmesh_set_derive (cmesh_partition, cmesh);
   t8_cmesh_set_partition_uniform (cmesh_partition, init_level, t8_scheme_new_default ());
   t8_cmesh_set_profiling (cmesh_partition, 1);
   t8_cmesh_commit (cmesh_partition, comm);
-  t8_cmesh_destroy (&cmesh);
   return cmesh_partition;
 }
 
@@ -187,7 +223,6 @@ main (int argc, char **argv)
   int initial_level;
   int eclass_int;
   int num_runs;
-  int num_elems;
 
   /* Error check the MPI return value. */
   SC_CHECK_MPI (mpiret);
@@ -205,8 +240,6 @@ main (int argc, char **argv)
   sc_options_add_int (options, 'l', "level", &initial_level, 0, "The initial uniform refinement level of the forest.");
   sc_options_add_int (options, 'n', "num-runs", &num_runs, 1,
                           "The number of runs to perform. If specified, the program will run num_runs times with the same parameters. ");
-  sc_options_add_int (options, 'N', "num-elems", &num_elems, 1,
-                          "The number of elements in the forest. If specified, the program will create a forest with num_elems elements. ");
   const int options_argc = sc_options_parse (t8_get_package_id (), SC_LP_DEFAULT, options, argc, argv);
 
   if( options_argc <= 0 || options_argc != argc || help )
@@ -236,7 +269,7 @@ main (int argc, char **argv)
 
   for (int irun = 0; irun < num_runs; ++irun) {
     t8_global_essentialf ("#################### Run %d of %d ####################\n", irun + 1, num_runs);
-    t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (sc_MPI_COMM_WORLD, initial_level, eclass, num_elems);
+    t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (sc_MPI_COMM_WORLD, initial_level, eclass);
 
 
     benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, eclass);

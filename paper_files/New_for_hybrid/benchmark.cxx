@@ -61,14 +61,13 @@ typedef struct
 t8_cmesh_t
 t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_MPI_Comm comm, const int init_level )
 {
-  t8_cmesh_t cmesh = t8_cmesh_from_msh_file ((char *) msh_file, 1, comm, mesh_dim, 0, false);
+  t8_cmesh_t cmesh = t8_cmesh_from_msh_file ((char *) msh_file, true, comm, mesh_dim, 0, false);
   t8_cmesh_t cmesh_partition;
   t8_cmesh_init (&cmesh_partition);
   t8_cmesh_set_derive (cmesh_partition, cmesh);
   t8_cmesh_set_partition_uniform (cmesh_partition, init_level, t8_scheme_new_default ());
   t8_cmesh_set_profiling (cmesh_partition, 1);
   t8_cmesh_commit (cmesh_partition, comm);
-  t8_cmesh_destroy (&cmesh);
   return cmesh_partition;
 }
 
@@ -266,7 +265,7 @@ main (int argc, char **argv)
     return 1;
   }
 
-  T8_ASSERT (mshfileprefix != NULL || eclass != T8_ECLASS_INVALID);
+  T8_ASSERT (mshfileprefix != NULL);
 
   t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
   const int max_level = initial_level + level_diff;
