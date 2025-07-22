@@ -126,7 +126,8 @@ t8_band_adapt (t8_forest_t forest, t8_forest_t forest_from, t8_locidx_t which_tr
 
 static void
 benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, const int max_level, 
-                    const std::array<double, 2> &x_min_max, const int do_ghost, const int num_steps, const double length)
+                    const double x_min, const int do_ghost, const int num_steps, const double length, 
+                    const double thickness)
 {
   double adapt_time = 0;
   double partition_time = 0;
@@ -160,7 +161,7 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   const double step = length / num_steps;
 
   t8_3D_vec normal({1, 0.0, 0.0});
-  adapt_data_t adapt_data = {x_min_max[0], x_min_max[1], normal, init_level, max_level};
+  adapt_data_t adapt_data = {x_min-thickness/2, x_min+thickness/2, normal, init_level, max_level};
   t8_normalize (adapt_data.normal);
   t8_forest_t forest_adapt, forest_partition;
   for (int istep = 0; istep < num_steps; ++istep) {
@@ -168,8 +169,10 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
     t8_forest_set_adapt (forest_adapt, forest, t8_band_adapt, 1);
     t8_forest_set_profiling (forest_adapt, 1);
 
-    adapt_data.c_min = x_min_max[0] + step ;
-    adapt_data.c_max = x_min_max[1] + step ;
+    adapt_data.c_min =  adapt_data.c_min + step ;
+    adapt_data.c_max = adapt_data.c_max + step ;
+
+    t8_productionf ("Step %d: Refining band from %.2f to %.2f\n", istep + 1, adapt_data.c_min, adapt_data.c_max);
 
     t8_forest_set_user_data (forest_adapt, (void *)&adapt_data);
     t8_forest_commit (forest_adapt);
@@ -223,11 +226,12 @@ main (int argc, char **argv)
   int dim;
   int initial_level;
   int level_diff;
-  std::array<double, 2> x_min_max;
+  double x_min;
   int num_runs;
   int do_ghost;
   double distance = 1.0;
   int num_steps = 1;
+  double thickness = 0.1;
 
   /* Error check the MPI return value. */
   SC_CHECK_MPI (mpiret);
@@ -248,10 +252,11 @@ main (int argc, char **argv)
   sc_options_add_int (options, 'r', "rlevel", &level_diff, 1,
                       "The number of levels that the forest is refined from the initial level.");
   sc_options_add_switch (options, 'g', "ghost", &do_ghost, "If specified, the forest is created with ghost cells.");
-  sc_options_add_double (options, 'x', "xmin", &x_min_max[0], 0, "The minimum x coordinate in the mesh.");
-  sc_options_add_double (options, 'X', "xmax", &x_min_max[1], 1, "The maximum x coordinate in the mesh.");
+  sc_options_add_double (options, 'x', "xmin", &x_min, 0, "The minimum x coordinate in the mesh.");
+  sc_options_add_double (options, 't', "thickness", &thickness, 0.1,
+                         "The thickness of the refinement region.");
   sc_options_add_double (options, 'D', "distance", &distance, 1.0,
-                         "The distance between the plane should move in total.");
+                         "The distance the plane should move in total.");
   sc_options_add_int (options, 's', "steps", &num_steps, 1,
                       "The number of steps to take in the refinement region. The distance is divided by this number.");
   sc_options_add_int (options, 'n', "num-runs", &num_runs, 1,
@@ -266,7 +271,6 @@ main (int argc, char **argv)
   }
 
   T8_ASSERT (mshfileprefix != NULL);
-
   t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
   const int max_level = initial_level + level_diff;
   for (int irun = 0; irun < num_runs; ++irun) {
@@ -274,7 +278,7 @@ main (int argc, char **argv)
     t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
 
 
-    benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, max_level, x_min_max, do_ghost, num_steps, distance);
+    benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, max_level, x_min, do_ghost, num_steps, distance, thickness);
   }
 
   sc_options_destroy (options);
