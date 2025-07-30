@@ -165,16 +165,16 @@ def create_graphics_elem(names, num_files, data):
         plt.yscale('log', base=2)
         plt.title(f'Performance Comparison for {names[i]}')
         color_map = {
-            "PYRAMID": "orange",
-            "HEXAHEDRON": "blue",
             "TETRAHEDRON": "green",
+            "HEXAHEDRON": "blue",
             "PRISM": "red"
+            "PYRAMID": "orange",
         }
         name_map = {
-            "PYRAMID": "Pyramid",
-            "HEXAHEDRON": "Hexahedron",
             "TETRAHEDRON": "Tetrahedron",
+            "HEXAHEDRON": "Hexahedron",
             "PRISM": "Prism"
+            "PYRAMID": "Pyramid",
         }
         for ifile in range(int(num_files)):
             element_types = set(entry["element_type"] for entry in data[ifile])
