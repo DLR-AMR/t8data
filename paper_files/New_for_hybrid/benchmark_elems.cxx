@@ -209,7 +209,7 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   sc_stats_accumulate (&times[4], balance_time);
   sc_stats_accumulate (&times[5], total_time);
   sc_stats_compute (comm, num_stats, times.data ());
-  sc_stats_print (t8_get_package_id (), SC_LP_ESSENTIAL, num_stats, times.data (), 1, 1);
+  sc_stats_print (t8_get_package_id (), SC_LP_PRODUCTION, num_stats, times.data (), 1, 1);
   t8_forest_unref (&forest_partition);
 }
 
