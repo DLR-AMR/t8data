@@ -167,14 +167,14 @@ def create_graphics_elem(names, num_files, data):
         color_map = {
             "TETRAHEDRON": "green",
             "HEXAHEDRON": "blue",
-            "PRISM": "red"
-            "PYRAMID": "orange",
+            "PRISM": "red",
+            "PYRAMID": "orange"
         }
         name_map = {
             "TETRAHEDRON": "Tetrahedron",
             "HEXAHEDRON": "Hexahedron",
-            "PRISM": "Prism"
-            "PYRAMID": "Pyramid",
+            "PRISM": "Prism",
+            "PYRAMID": "Pyramid"
         }
         for ifile in range(int(num_files)):
             element_types = set(entry["element_type"] for entry in data[ifile])

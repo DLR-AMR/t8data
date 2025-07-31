@@ -141,15 +141,17 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   double new_time = 0;
   double total_time = 0;
   double ghost_time = 0;
+  t8_locidx_t ghost_sent = 0;
   double balance_time = 0;
-  const int num_stats = 6;
+  const int num_stats = 7;
   std::array<sc_statinfo_t, num_stats> times;
   sc_stats_init (&times[0], "new");
   sc_stats_init (&times[1], "adapt");
   sc_stats_init (&times[2], "partition");
   sc_stats_init (&times[3], "ghost");
-  sc_stats_init (&times[4], "balance");
-  sc_stats_init (&times[5], "total");
+  sc_stats_init (&times[4], "ghost_sent");
+  sc_stats_init (&times[5], "balance");
+  sc_stats_init (&times[6], "total");
 
   t8_forest_t forest;
   t8_forest_init (&forest);
@@ -190,7 +192,6 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
 
   t8_forest_commit (forest_partition);
   forest = forest_partition;
-  int ghost_sent = 0;
   int procs_sent = 0;
   int balance_rounds = 0;
   partition_time += t8_forest_profile_get_partition_time (forest_partition, &procs_sent);
@@ -206,8 +207,9 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   sc_stats_accumulate (&times[1], adapt_time);
   sc_stats_accumulate (&times[2], partition_time);
   sc_stats_accumulate (&times[3], ghost_time);
-  sc_stats_accumulate (&times[4], balance_time);
-  sc_stats_accumulate (&times[5], total_time);
+  sc_stats_accumulate (&times[4], ghost_sent);
+  sc_stats_accumulate (&times[5], balance_time);
+  sc_stats_accumulate (&times[6], total_time);
   sc_stats_compute (comm, num_stats, times.data ());
   sc_stats_print (t8_get_package_id (), SC_LP_PRODUCTION, num_stats, times.data (), 1, 1);
   t8_forest_unref (&forest_partition);
