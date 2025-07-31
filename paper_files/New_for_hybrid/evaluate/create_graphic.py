@@ -74,9 +74,11 @@ def extract_data_elems(file_path, columns):
     with open(file_path, 'r') as file:
         lines = file.readlines()  # Read all lines into a list
         element_type = None
+        num_elements = 0
         for line in lines:
             if "TEST " in line:
                 element_type = line.split("TEST")[1].strip()
+                num_elements = 0  # Reset num_elements for each new element type
             elif "-------------  Running:" in line and "with" in line and "procs" in line:
                 parts = line.split("-------------  Running:")[1].strip().split("with")
                 args = parts[0].strip()
@@ -98,6 +100,10 @@ def extract_data_elems(file_path, columns):
                         # find the number of the current run
                         run_number = run_line.split("[t8] #################### Run")[1].split("of")[0].strip()
                         continue  # Skip the run header lines
+                    if "Done t8_forest_balance with" in run_line and num_elements == 0:
+                        # Extract the number of elements from the line
+                        num_elements = int(run_line.split("with")[1].split("global elements")[0].strip())
+                        data[-1]["num_elements"] = num_elements
                     if "[t8] Summary = [" in run_line:
                         # Extract the summary data
                         summary_data = run_line.split("[t8] Summary = [")[1].split("]")[0].strip().split()
@@ -188,15 +194,29 @@ def create_graphics_elem(names, num_files, data):
                 if element_type == "PYRAMID":
                     ideal_scaling = [times[0] / 2**iproc for iproc in range(len(procs))]
                     plt.plot(procs, ideal_scaling, label="Ideal Strong Scaling" if ifile == 0 else None, color='black', linestyle='dashed')
-                    if ifile != int(num_files) - 1:
+                    if ifile == 0:
+                        num_elements = element_data[ifile].get("num_elements", 1)
+                        num_elements_next_file = next(
+                            (entry.get("num_elements", 1) for entry in data[ifile + 1] if entry.get("element_type") == "PYRAMID"),
+                            1
+                        )
+                        element_scaling = num_elements_next_file / num_elements
                         for iproc, proc in enumerate(procs):
                             val = times[iproc]
-                            ideal_weak_scaling = [val * ((2 * (8**i) - 6**i) / (8**i)) for i in range(int(num_files))]
+                            ideal_weak_scaling = [val * (element_scaling**i) / (8**i) for i in range(int(num_files))]
                             shifted_procs = [proc * 8**i for i in range(int(num_files))]
                             plt.plot(shifted_procs, ideal_weak_scaling, color='black', linestyle='dotted', label="Ideal Weak Scaling" if iproc == 0 and ifile == 0 else None)
 
         plt.grid()
         plt.legend()
+        plt.legend(loc='lower left')
+        handles, labels = plt.gca().get_legend_handles_labels()
+        order = []
+        label_order = ["Tetrahedron", "Hexahedron", "Prism", "Pyramid", "Ideal Strong Scaling", "Ideal Weak Scaling"]
+        for lbl in label_order:
+            if lbl in labels:
+                order.append(labels.index(lbl))
+        plt.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc='lower left')
         plt_name = f"graph_{names[i]}.png"
         plt.savefig(plt_name)
         print(f"Graph saved as {plt_name}")
