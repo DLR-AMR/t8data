@@ -176,7 +176,7 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
     adapt_data.c_min =  adapt_data.c_min + step ;
     adapt_data.c_max = adapt_data.c_max + step ;
 
-    t8_productionf ("Step %d: Refining band from %.2f to %.2f\n", istep + 1, adapt_data.c_min, adapt_data.c_max);
+    t8_global_productionf ("Step %d: Refining band from %.2f to %.2f\n", istep + 1, adapt_data.c_min, adapt_data.c_max);
 
     t8_forest_set_user_data (forest_adapt, (void *)&adapt_data);
     t8_forest_commit (forest_adapt);
