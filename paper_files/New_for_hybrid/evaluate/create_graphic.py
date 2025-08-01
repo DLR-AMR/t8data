@@ -123,7 +123,7 @@ def extract_data_elems(file_path, columns):
     return data
 
 def create_graphics(num_files, names, graph_name_base, graph_name_compare, data_base, data_compare, pyra_flag=True):
-    for i in range(len(names)):
+   for i in range(len(names)):
         plt.figure(figsize=(10, 6))
         plt.xlabel('Number of Processes')
         plt.ylabel('Average Time (s)')
@@ -163,7 +163,13 @@ def create_graphics(num_files, names, graph_name_base, graph_name_compare, data_
         print(f"Graph saved as {plt_name}")
 
 def create_graphics_elem(names, num_files, data):
+    compute_ghosts = False
     for i in range(len(names)):
+        if "Ghost" in names[i]:
+            compute_ghosts = True
+        if "Ghost_sent" in names[i]:
+            continue
+        
         plt.figure(figsize=(10, 6))
         plt.xlabel('Number of Processes')
         plt.ylabel('Average Time (s)')
@@ -188,6 +194,10 @@ def create_graphics_elem(names, num_files, data):
                 element_data = [entry for entry in data[ifile] if entry["element_type"] == element_type]
                 procs = [entry["procs"] for entry in element_data]
                 times = [entry["summaries"][i] for entry in element_data]
+                if compute_ghosts:
+                    ghost_sent = [entry["summaries"][i+1] for entry in element_data]
+                    parallel_efficiency = [times[j] * ghost_sent[j+1] / (times[j+1] * ghost_sent[j]) for j in range(len(times)-1)]
+                    print(f"Parallel Efficiency for {element_type}: {parallel_efficiency}")
                 color = color_map.get(element_type, "gray")
                 plt.plot(procs, times, label=name_map[element_type] if ifile == 0 else None, marker='o', color=color)
 
@@ -220,6 +230,8 @@ def create_graphics_elem(names, num_files, data):
         plt_name = f"graph_{names[i]}.png"
         plt.savefig(plt_name)
         print(f"Graph saved as {plt_name}")
+        if "Ghost" in names[i]:
+            compute_ghosts = False
 
 def compare_versions():
     num_files = sys.argv[2]

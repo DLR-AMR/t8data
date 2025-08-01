@@ -126,23 +126,27 @@ t8_band_adapt (t8_forest_t forest, t8_forest_t forest_from, t8_locidx_t which_tr
 
 static void
 benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, const int max_level, 
-                    const double x_min, const int do_ghost, const int num_steps, const double length, 
-                    const double thickness)
+                    const double x_min, const bool do_ghost, const int num_steps, const double length, 
+                    const double thickness, const bool do_balance)
 {
   double adapt_time = 0;
   double partition_time = 0;
   double new_time = 0;
   double total_time = 0;
   double ghost_time = 0;
+  t8_locidx_t ghost_sent = 0;
   double balance_time = 0;
-  const int num_stats = 6;
+  int balance_rounds = 0;
+  const int num_stats = 8;
   std::array<sc_statinfo_t, num_stats> times;
   sc_stats_init (&times[0], "new");
   sc_stats_init (&times[1], "adapt");
   sc_stats_init (&times[2], "partition");
   sc_stats_init (&times[3], "ghost");
-  sc_stats_init (&times[4], "balance");
-  sc_stats_init (&times[5], "total");
+  sc_stats_init (&times[4], "ghost_sent");
+  sc_stats_init (&times[5], "balance");
+  sc_stats_init (&times[6], "balance_rounds");
+  sc_stats_init (&times[7], "total");
 
   t8_forest_t forest;
   t8_forest_init (&forest);
@@ -182,6 +186,10 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
 
     t8_forest_init (&forest_partition);
     t8_forest_set_partition(forest_partition, forest_adapt, 0);
+    if( do_balance )
+    {
+      t8_forest_set_balance (forest_partition, NULL, 0);
+    }
     t8_forest_set_profiling (forest_partition, 1);
     if (do_ghost) {
       t8_forest_set_ghost (forest_partition, 1, T8_GHOST_FACES);
@@ -189,14 +197,16 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
  
     t8_forest_commit (forest_partition);
     forest = forest_partition;
-    int ghost_sent = 0;
+    int ghost_sent_iter = 0;
     int procs_sent = 0;
-    int balance_rounds = 0;
+    int balance_rounds_iter = 0;
     partition_time += t8_forest_profile_get_partition_time (forest_partition, &procs_sent);
-    ghost_time += t8_forest_profile_get_ghost_time (forest_partition, &ghost_sent);
-    balance_time += t8_forest_profile_get_balance_time (forest_partition, &balance_rounds);
+    ghost_time += t8_forest_profile_get_ghost_time (forest_partition, &ghost_sent_iter);
 
+    balance_time += t8_forest_profile_get_balance_time (forest_partition, &balance_rounds_iter);
 
+    ghost_sent += ghost_sent_iter;
+    balance_rounds += balance_rounds_iter;
     t8_forest_unref (&forest_adapt);
   }
   
@@ -208,8 +218,10 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   sc_stats_accumulate (&times[1], adapt_time);
   sc_stats_accumulate (&times[2], partition_time);
   sc_stats_accumulate (&times[3], ghost_time);
-  sc_stats_accumulate (&times[4], balance_time);
-  sc_stats_accumulate (&times[5], total_time);
+  sc_stats_accumulate (&times[4], ghost_sent);
+  sc_stats_accumulate (&times[5], balance_time);
+  sc_stats_accumulate (&times[6], balance_rounds);
+  sc_stats_accumulate (&times[7], total_time);
   sc_stats_compute (comm, num_stats, times.data ());
   sc_stats_print (t8_get_package_id (), SC_LP_ESSENTIAL, num_stats, times.data (), 1, 1);
   t8_forest_unref (&forest_partition);
@@ -229,6 +241,7 @@ main (int argc, char **argv)
   double x_min;
   int num_runs;
   int do_ghost;
+  int do_balance;
   double distance = 1.0;
   int num_steps = 1;
   double thickness = 0.1;
@@ -252,6 +265,7 @@ main (int argc, char **argv)
   sc_options_add_int (options, 'r', "rlevel", &level_diff, 1,
                       "The number of levels that the forest is refined from the initial level.");
   sc_options_add_switch (options, 'g', "ghost", &do_ghost, "If specified, the forest is created with ghost cells.");
+  sc_options_add_switch (options, 'b', "balance", &do_balance, "If specified, the forest is balanced after each refinement step.");
   sc_options_add_double (options, 'x', "xmin", &x_min, 0, "The minimum x coordinate in the mesh.");
   sc_options_add_double (options, 't', "thickness", &thickness, 0.1,
                          "The thickness of the refinement region.");
@@ -278,7 +292,7 @@ main (int argc, char **argv)
     t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
 
 
-    benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, max_level, x_min, do_ghost, num_steps, distance, thickness);
+    benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, max_level, x_min, do_ghost, num_steps, distance, thickness, do_balance);
   }
 
   sc_options_destroy (options);
