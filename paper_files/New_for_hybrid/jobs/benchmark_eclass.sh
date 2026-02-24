@@ -14,7 +14,7 @@ ELEMENT_NAMES=("TETRAHEDRON" "HEXAHEDRON" "PRISM" "PYRAMID")
 # l = initial level
 # n = number of reruns
 
-PART_ARGS="-l3 -n3"
+PART_ARGS="-l4 -n3"
 
 
 JOBFILE="/scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark"
@@ -22,6 +22,12 @@ JOBFILE="/scratch/ws/4/knap_da-t8code_timings/benchmark/benchmark"
 for i in {0..3}; do
 	ELEMENT=${ELEMENT_NAMES[$i]}
 	echo "TEST $ELEMENT"
+	if [ "$i" -eq 3 ]; then
+		LVAL=$(echo $PART_ARGS | sed -n 's/.*-l\([0-9]\+\).*/\1/p')
+		NEW_LVAL=$((LVAL - 1))
+		PART_ARGS="-l$NEW_LVAL -n3"
+		echo "Adjusting level to $NEW_LVAL for PYRAMID element"
+	fi
 	ARGS="$PART_ARGS -e$i"
 	JOB_CMD="$JOBFILE $ARGS"
 	for PROCS in $NUM_PROCS ; do

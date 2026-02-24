@@ -167,6 +167,7 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   t8_3D_vec normal({1, 0.0, 0.0});
   adapt_data_t adapt_data = {x_min-thickness/2, x_min+thickness/2, normal, init_level, max_level};
   t8_normalize (adapt_data.normal);
+  t8_gloidx_t max_num_global_elements = -1;
   t8_forest_t forest_adapt, forest_partition;
   for (int istep = 0; istep < num_steps; ++istep) {
     t8_forest_init (&forest_adapt);
@@ -175,8 +176,6 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
 
     adapt_data.c_min =  adapt_data.c_min + step ;
     adapt_data.c_max = adapt_data.c_max + step ;
-
-    t8_global_productionf ("Step %d: Refining band from %.2f to %.2f\n", istep + 1, adapt_data.c_min, adapt_data.c_max);
 
     t8_forest_set_user_data (forest_adapt, (void *)&adapt_data);
     t8_forest_commit (forest_adapt);
@@ -196,6 +195,9 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
     }
  
     t8_forest_commit (forest_partition);
+    const t8_gloidx_t num_global_elements = t8_forest_get_global_num_leaf_elements (forest_partition);
+    if (num_global_elements > max_num_global_elements)
+      max_num_global_elements = num_global_elements;
     forest = forest_partition;
     int ghost_sent_iter = 0;
     int procs_sent = 0;
@@ -213,6 +215,8 @@ benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, c
   total_time += sc_MPI_Wtime ();
 
   t8_global_productionf ("Num steps: %d\n", num_steps);
+
+  t8_global_essentialf ("Max num elements after adapt: %llu\n", (unsigned long long)max_num_global_elements);
 
   sc_stats_accumulate (&times[0], new_time);
   sc_stats_accumulate (&times[1], adapt_time);
@@ -251,8 +255,8 @@ main (int argc, char **argv)
 
   /* Initialize the sc library, has to happen before we initialize t8code. */
   sc_init (sc_MPI_COMM_WORLD, 1, 1, NULL, SC_LP_ESSENTIAL);
-  /* Initialize t8code with log level SC_LP_PRODUCTION. See sc.h for more info on the log levels. */
-  t8_init (SC_LP_PRODUCTION);
+  /* Initialize t8code with log level SC_LP_ESSENTIAL. See sc.h for more info on the log levels. */
+  t8_init (SC_LP_ESSENTIAL);
 
   sc_options_t *options = sc_options_new (argv[0]);
 
