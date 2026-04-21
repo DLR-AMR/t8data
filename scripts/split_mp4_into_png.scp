@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# This script takes a video file as input and splits it up into multiple png files
+#
+
+input=$1
+outfile_prefix=$2
+
+if [[ -z "$input" || -z "$outfile_prefix" ]]
+then
+  echo "Split up an input video file into multiple png files."
+  echo "Usage: $0 [INPUT_FILE] [OUTPUT_PREFIX]"
+  exit 1
+fi
+
+ffmpeg_call="ffmpeg -i $input -vf fps=20 ${outfile_prefix}_%04d.png"
+echo $ffmpeg_call
+eval "$ffmpeg_call"

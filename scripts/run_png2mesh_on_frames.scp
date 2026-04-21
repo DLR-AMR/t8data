@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#
+# This script executes png2mesh on a number of input png files.
+#
+
+format=$1
+count=$2
+
+if [[ -z "$format" || -z "$count" ]]
+then
+  echo Execute png2mesh on a number of input files of the form \"prefix\%04d.png\".
+  echo "Usage: $0 [PREFIX_OF_PNG_FILES] [NUMBER_OF_FILES]"
+  exit 1
+fi
+
+
+
+logfile=run_png2mesh_on_frames.out
+
+echo >> $logfile
+echo >> $logfile
+echo Starting new run for pngs $format. >> $logfile
+echo >> $logfile
+
+
+for i in $(seq 1 $count)
+do
+  echo $file
+  
+  # Convert i into a 4 digit number with leading 0s
+  formatted_number=$(printf "%04d" "$i")
+  
+  # Produce the file name
+  file="${format}${formatted_number}.png"
+  
+  # Now we call png2mesh
+  png2mesh_call="mpirun -np 40 ../png2mesh_demo -f $file -l1 -m 10 -e1"
+  echo $png2mesh_call
+  echo $png2mesh_call \n >> $logfile
+  eval "$png2mesh_call" >> $logfile
+  echo >> $logfile
+done

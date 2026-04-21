@@ -1,0 +1,15 @@
+#!/bin/bash
+
+infile=$1
+outfile=$2
+
+if [[ -z "$infile" || -z "$outfile" ]]
+then
+  echo "Usage: $0 [MP4_FILE] [OUTPUT_FILE]"
+  exit 1
+fi
+
+ffmpeg_call="ffmpeg -i $infile -vf \"scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:black\" -c:v libx264 -crf 18 -preset fast -r 30 -c:a aac -b:a 128k       -movflags +faststart    $outfile"
+
+echo $ffmpeg_call
+eval "$ffmpeg_call"

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+# This script merges multple png input files into a single video file.
+#
+
+prefix=$1
+outfile=$2
+
+if [[ -z "$prefix" || -z "$outfile" ]]
+then
+  echo Merge multiple png files of format \"prefix.\%04d.png\" into a single video file.
+  echo "Usage: $0 [PREFIX_OF_PNG_FILES] [OUTPUT_FILE]"
+  exit 1
+fi
+
+ffmpeg_call="ffmpeg -framerate 20 -i ${prefix}.%04d.png -c:v libx264 -crf 18 -pix_fmt rgb24 ${outfile}"
+eval "$ffmpeg_call"
