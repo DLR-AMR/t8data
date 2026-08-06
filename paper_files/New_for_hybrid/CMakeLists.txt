@@ -17,5 +17,8 @@ target_include_directories(Benchmark_new_for_hybrid
 )
 
 add_executable(benchmark benchmark.cxx)
+add_executable(benchmark_elems benchmark_elems.cxx)
 
 target_link_libraries(benchmark PRIVATE T8CODE::T8)
+target_link_libraries(benchmark_elems PRIVATE T8CODE::T8)
+
