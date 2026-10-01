@@ -27,12 +27,9 @@
 #include <sc_statistics.h>
 #include <sc_functions.h>
 
-#include <t8_vtk/t8_vtk_writer.h>
-
 #include <t8_cmesh.h>
 #include <t8_cmesh/t8_cmesh_examples.h>
 #include <t8_cmesh_readmshfile.h>
-#include <t8_cmesh/t8_cmesh_partition.h>
 #include <t8_cmesh/t8_cmesh_examples.h>
 
 #include <t8_forest/t8_forest_general.h>
@@ -62,22 +59,15 @@ typedef struct
  * \return t8_cmesh_t 
  */
 t8_cmesh_t
-t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_MPI_Comm comm, const int init_level)
+t8_benchmark_forest_create_cmesh (const char *msh_file, const int mesh_dim, sc_MPI_Comm comm, const int init_level )
 {
-  t8_cmesh_t cmesh;
-  if (msh_file != NULL){
-    cmesh = t8_cmesh_from_msh_file ((char *) msh_file, 1, comm, mesh_dim, 0, false);
-  }
-  else {
-    cmesh = t8_cmesh_new_full_hybrid(comm);
-  }
+  t8_cmesh_t cmesh = t8_cmesh_from_msh_file ((char *) msh_file, true, comm, mesh_dim, 0, false);
   t8_cmesh_t cmesh_partition;
   t8_cmesh_init (&cmesh_partition);
   t8_cmesh_set_derive (cmesh_partition, cmesh);
   t8_cmesh_set_partition_uniform (cmesh_partition, init_level, t8_scheme_new_default ());
   t8_cmesh_set_profiling (cmesh_partition, 1);
   t8_cmesh_commit (cmesh_partition, comm);
-  t8_cmesh_destroy (&cmesh);
   return cmesh_partition;
 }
 
@@ -135,19 +125,28 @@ t8_band_adapt (t8_forest_t forest, t8_forest_t forest_from, t8_locidx_t which_tr
 }
 
 static void
-benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm, const int init_level, const int max_level, 
-  const bool no_vtk, const std::array<double, 2> &x_min_max, const double delta_t, const double max_time)
+benchmark_band_adapt(t8_cmesh_t cmesh, sc_MPI_Comm comm, const int init_level, const int max_level, 
+                    const double x_min, const bool do_ghost, const int num_steps, const double length, 
+                    const double thickness, const bool do_balance)
 {
   double adapt_time = 0;
   double partition_time = 0;
   double new_time = 0;
   double total_time = 0;
-  const int num_stats = 4;
+  double ghost_time = 0;
+  t8_locidx_t ghost_sent = 0;
+  double balance_time = 0;
+  int balance_rounds = 0;
+  const int num_stats = 8;
   std::array<sc_statinfo_t, num_stats> times;
   sc_stats_init (&times[0], "new");
   sc_stats_init (&times[1], "adapt");
   sc_stats_init (&times[2], "partition");
-  sc_stats_init (&times[3], "total");
+  sc_stats_init (&times[3], "ghost");
+  sc_stats_init (&times[4], "ghost_sent");
+  sc_stats_init (&times[5], "balance");
+  sc_stats_init (&times[6], "balance_rounds");
+  sc_stats_init (&times[7], "total");
 
   t8_forest_t forest;
   t8_forest_init (&forest);
@@ -163,49 +162,53 @@ benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm,
 
   sc_stats_set1 (&times[0], new_time, "new");
 
-  t8_3D_vec normal({0.8, 0.3, 0.0});
-  adapt_data_t adapt_data = {x_min_max[0], x_min_max[1], normal, init_level, max_level};
+  const double step = length / num_steps;
+
+  t8_3D_vec normal({1, 0.0, 0.0});
+  adapt_data_t adapt_data = {x_min-thickness/2, x_min+thickness/2, normal, init_level, max_level};
   t8_normalize (adapt_data.normal);
-  int num_steps = 0;
+  t8_gloidx_t max_num_global_elements = -1;
   t8_forest_t forest_adapt, forest_partition;
-  for (double time = 0; time < max_time; time += delta_t, ++num_steps) {
+  for (int istep = 0; istep < num_steps; ++istep) {
     t8_forest_init (&forest_adapt);
     t8_forest_set_adapt (forest_adapt, forest, t8_band_adapt, 1);
     t8_forest_set_profiling (forest_adapt, 1);
 
-    adapt_data.c_min = x_min_max[0] + time ;
-    adapt_data.c_max = x_min_max[1] + time ;
+    adapt_data.c_min =  adapt_data.c_min + step ;
+    adapt_data.c_max = adapt_data.c_max + step ;
 
     t8_forest_set_user_data (forest_adapt, (void *)&adapt_data);
-    adapt_time -= sc_MPI_Wtime ();
     t8_forest_commit (forest_adapt);
-    adapt_time += sc_MPI_Wtime ();
+    adapt_time += t8_forest_profile_get_adapt_time(forest_adapt);
 
-    t8_forest_compute_profile (forest_adapt);
     t8_forest_ref (forest_adapt);
 
     t8_forest_init (&forest_partition);
     t8_forest_set_partition(forest_partition, forest_adapt, 0);
-    t8_forest_set_profiling (forest_partition, 1);
- 
-    partition_time -= sc_MPI_Wtime ();
-    t8_forest_commit (forest_partition);
-    partition_time += sc_MPI_Wtime ();
-    t8_forest_compute_profile (forest_partition);
-    t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
-    forest = forest_partition;
-
-    if (!no_vtk) {
-      char forest_vtu[BUFSIZ];
-      char cmesh_vtu[BUFSIZ];
-      snprintf (forest_vtu, BUFSIZ, "%s_forest_partition_%03d", vtu_prefix, num_steps);
-      snprintf (cmesh_vtu, BUFSIZ, "%s_cmesh_partition_%03d", vtu_prefix, num_steps);
-      t8_forest_write_vtk (forest_partition, forest_vtu);
-      t8_cmesh_vtk_write_file (t8_forest_get_cmesh (forest_partition), cmesh_vtu);
-      t8_debugf ("Wrote partitioned forest and cmesh\n");
+    if( do_balance )
+    {
+      t8_forest_set_balance (forest_partition, NULL, 0);
     }
-    t8_cmesh_print_profile (t8_forest_get_cmesh (forest_partition));
-    t8_forest_print_profile (forest_partition);
+    t8_forest_set_profiling (forest_partition, 1);
+    if (do_ghost) {
+      t8_forest_set_ghost (forest_partition, 1, T8_GHOST_FACES);
+    }
+ 
+    t8_forest_commit (forest_partition);
+    const t8_gloidx_t num_global_elements = t8_forest_get_global_num_leaf_elements (forest_partition);
+    if (num_global_elements > max_num_global_elements)
+      max_num_global_elements = num_global_elements;
+    forest = forest_partition;
+    int ghost_sent_iter = 0;
+    int procs_sent = 0;
+    int balance_rounds_iter = 0;
+    partition_time += t8_forest_profile_get_partition_time (forest_partition, &procs_sent);
+    ghost_time += t8_forest_profile_get_ghost_time (forest_partition, &ghost_sent_iter);
+
+    balance_time += t8_forest_profile_get_balance_time (forest_partition, &balance_rounds_iter);
+
+    ghost_sent += ghost_sent_iter;
+    balance_rounds += balance_rounds_iter;
     t8_forest_unref (&forest_adapt);
   }
   
@@ -213,10 +216,16 @@ benchmark_band_adapt(t8_cmesh_t cmesh, const char *vtu_prefix, sc_MPI_Comm comm,
 
   t8_global_productionf ("Num steps: %d\n", num_steps);
 
+  t8_global_essentialf ("Max num elements after adapt: %llu\n", (unsigned long long)max_num_global_elements);
+
   sc_stats_accumulate (&times[0], new_time);
   sc_stats_accumulate (&times[1], adapt_time);
   sc_stats_accumulate (&times[2], partition_time);
-  sc_stats_accumulate (&times[3], total_time);
+  sc_stats_accumulate (&times[3], ghost_time);
+  sc_stats_accumulate (&times[4], ghost_sent);
+  sc_stats_accumulate (&times[5], balance_time);
+  sc_stats_accumulate (&times[6], balance_rounds);
+  sc_stats_accumulate (&times[7], total_time);
   sc_stats_compute (comm, num_stats, times.data ());
   sc_stats_print (t8_get_package_id (), SC_LP_ESSENTIAL, num_stats, times.data (), 1, 1);
   t8_forest_unref (&forest_partition);
@@ -229,59 +238,66 @@ main (int argc, char **argv)
   /* Initialize MPI. This has to happen before we initialize sc or t8code. */
   int mpiret = sc_MPI_Init (&argc, &argv);
   int help = 0;
-  int no_vtk;
   const char *mshfileprefix = NULL;
   int dim;
   int initial_level;
   int level_diff;
-  std::array<double, 2> x_min_max;
-  double T;
-  double cfl = 0;
+  double x_min;
+  int num_runs;
+  int do_ghost;
+  int do_balance;
+  double distance = 1.0;
+  int num_steps = 1;
+  double thickness = 0.1;
 
   /* Error check the MPI return value. */
   SC_CHECK_MPI (mpiret);
 
   /* Initialize the sc library, has to happen before we initialize t8code. */
   sc_init (sc_MPI_COMM_WORLD, 1, 1, NULL, SC_LP_ESSENTIAL);
-  /* Initialize t8code with log level SC_LP_PRODUCTION. See sc.h for more info on the log levels. */
-  t8_init (SC_LP_PRODUCTION);
+  /* Initialize t8code with log level SC_LP_ESSENTIAL. See sc.h for more info on the log levels. */
+  t8_init (SC_LP_ESSENTIAL);
 
   sc_options_t *options = sc_options_new (argv[0]);
 
   sc_options_add_switch (options, 'h', "help", &help, "Print this help message and exit");
-  sc_options_add_switch (options, 'o', "no-vtk", &no_vtk, "Do not write vtk output.");
   sc_options_add_string (options, 'f', "mshfile", &mshfileprefix, NULL,
                          "If specified, the cmesh is constructed from a .msh file with the given prefix. "
                          "The files must end in .msh and be created with gmsh.");
-  sc_options_add_int (options, 'd', "dim", &dim, 2, "Together with -f: The dimension of the coarse mesh. 2 or 3.");
+  sc_options_add_int (options, 'd', "dim", &dim, 3, "Together with -f: The dimension of the coarse mesh. 2 or 3.");
   sc_options_add_int (options, 'l', "level", &initial_level, 0, "The initial uniform refinement level of the forest.");
   sc_options_add_int (options, 'r', "rlevel", &level_diff, 1,
                       "The number of levels that the forest is refined from the initial level.");
-  sc_options_add_double (options, 'x', "xmin", &x_min_max[0], 0, "The minimum x coordinate in the mesh.");
-  sc_options_add_double (options, 'X', "xmax", &x_min_max[1], 1, "The maximum x coordinate in the mesh.");
-  sc_options_add_double (options, 'T', "time", &T, 1,
-                         "The simulated time span. We simulate the time from 0 to T. T has to be > 0.");
-  /* CFL number. delta_t = CFL * 0.64 / 2^level */
-  sc_options_add_double (options, 'C', "cfl", &cfl, 0,
-                         "The CFL number. If specified, then delta_t is set to CFL * 0.64 / 2^level. ");
+  sc_options_add_switch (options, 'g', "ghost", &do_ghost, "If specified, the forest is created with ghost cells.");
+  sc_options_add_switch (options, 'b', "balance", &do_balance, "If specified, the forest is balanced after each refinement step.");
+  sc_options_add_double (options, 'x', "xmin", &x_min, 0, "The minimum x coordinate in the mesh.");
+  sc_options_add_double (options, 't', "thickness", &thickness, 0.1,
+                         "The thickness of the refinement region.");
+  sc_options_add_double (options, 'D', "distance", &distance, 1.0,
+                         "The distance the plane should move in total.");
+  sc_options_add_int (options, 's', "steps", &num_steps, 1,
+                      "The number of steps to take in the refinement region. The distance is divided by this number.");
+  sc_options_add_int (options, 'n', "num-runs", &num_runs, 1,
+                          "The number of runs to perform. If specified, the program will run num_runs times with the same parameters. ");
   
   const int options_argc = sc_options_parse (t8_get_package_id (), SC_LP_DEFAULT, options, argc, argv);
 
-  if( options_argc <= 0 || options_argc != argc || help || initial_level < 0 || level_diff <= 0 || cfl == 0)
+  if( options_argc <= 0 || options_argc != argc || help || initial_level < 0 || level_diff <= 0 )
   {
     sc_options_print_usage (t8_get_package_id (), SC_LP_ERROR, options, NULL);
     return 1;
   }
-  const double delta_t = cfl * 0.64 / (1 << initial_level);
-  t8_global_productionf ("Using CFL %f, delta_t = %f\n", cfl, delta_t);
 
+  T8_ASSERT (mshfileprefix != NULL);
   t8_global_productionf ("Using mshfileprefix %s with dim %d\n", mshfileprefix, dim);
-  t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
-
   const int max_level = initial_level + level_diff;
+  for (int irun = 0; irun < num_runs; ++irun) {
+    t8_global_essentialf ("#################### Run %d of %d ####################\n", irun + 1, num_runs);
+    t8_cmesh_t cmesh = t8_benchmark_forest_create_cmesh (mshfileprefix, dim, sc_MPI_COMM_WORLD, initial_level);
 
-  benchmark_band_adapt (cmesh, "benchmark", sc_MPI_COMM_WORLD, initial_level, max_level, no_vtk, 
-    x_min_max, delta_t, T);
+
+    benchmark_band_adapt (cmesh, sc_MPI_COMM_WORLD, initial_level, max_level, x_min, do_ghost, num_steps, distance, thickness, do_balance);
+  }
 
   sc_options_destroy (options);
   sc_finalize ();
